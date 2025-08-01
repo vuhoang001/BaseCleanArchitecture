@@ -1,0 +1,12 @@
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\bin\Debug\net8.0\Domain.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\bin\Debug\net8.0\Domain.pdb
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\Domain.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\Domain.pdb
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\ref\Domain.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
