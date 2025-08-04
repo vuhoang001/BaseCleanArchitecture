@@ -10,3 +10,4 @@ D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\refint\Domai
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\Domain.pdb
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\ref\Domain.dll
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Domain\obj\Debug\net8.0\Domain.sourcelink.json

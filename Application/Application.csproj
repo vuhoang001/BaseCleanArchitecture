@@ -16,4 +16,11 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="PurchaseRequest\EventHandlers\" />
+      <Folder Include="PurchaseRequest\Queries\" />
+      <Folder Include="User\EventHandlers\" />
+      <Folder Include="User\Queries\" />
+    </ItemGroup>
+
 </Project>

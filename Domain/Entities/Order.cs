@@ -1,44 +1,49 @@
-﻿using Domain.Events.Order;
-
-namespace Domain.Entities;
+﻿namespace Domain.Entities;
 
 public class Order : Aggregate<string>
 {
     public string Code { get; private set; } = default!;
     public string Name { get; private set; } = default!;
 
-    public decimal TotalPrice => OrderItems.Sum(x => x.UnitPrice * x.Quantity);
+    public decimal TotalPrice => _orderItems.Sum(x => x.UnitPrice * x.Quantity);
 
-    public readonly List<OrderItem> OrderItems = new();
+    private readonly List<OrderItem> _orderItems = new();
 
-    public IReadOnlyList<OrderItem> OrderItemsList => OrderItems;
+    public IReadOnlyList<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
-
-    public void Create(string code, string name, List<OrderItem> orderItems)
+    private Order()
     {
+    }
+
+    public Order(string code, string name)
+    {
+        Id   = Guid.NewGuid().ToString();
         Code = code;
         Name = name;
-
-        AddDomainEvent(new OrderCreateProductEvent(this));
     }
 
     public void AddItem(string productCode, string productName, decimal quanitty, decimal unitPrice)
     {
         var orderItem = new OrderItem(Id, productCode, productName, quanitty, unitPrice);
-        OrderItems.Add(orderItem);
+        _orderItems.Add(orderItem);
     }
 }
 
 public class OrderItem : Entity<string>
 {
-    public string FatherId { get; private set; }
-    public string ProductCode { get; private set; }
-    public string ProductName { get; private set; }
+    public string FatherId { get; private set; } = null!;
+    public string ProductCode { get; private set; } = null!;
+    public string ProductName { get; private set; } = null!;
     public decimal Quantity { get; private set; }
     public decimal UnitPrice { get; private set; }
 
+    private OrderItem()
+    {
+    }
+
     public OrderItem(string fatherId, string productCode, string productName, decimal quantity, decimal unitPrice)
     {
+        Id          = Guid.NewGuid().ToString();
         FatherId    = fatherId;
         ProductCode = productCode;
         ProductName = productName;

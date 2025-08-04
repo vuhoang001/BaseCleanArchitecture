@@ -15,3 +15,4 @@ D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Application\obj\Debug\net8.0\Applica
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Application\obj\Debug\net8.0\ref\Application.dll
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Application\bin\Debug\net8.0\Shared.dll
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Application\bin\Debug\net8.0\Shared.pdb
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Application\obj\Debug\net8.0\Application.sourcelink.json

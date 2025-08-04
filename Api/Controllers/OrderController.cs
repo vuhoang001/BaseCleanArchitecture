@@ -1,5 +1,5 @@
-﻿using Application.Order.Commands.Create;
-using Domain.Entities;
+﻿using Application.Dtos;
+using Application.Order.Commands.Create;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +10,7 @@ namespace Api.Controllers;
 public class OrderController(ISender sender) : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> CreateAsync([FromBody] Order order)
+    public async Task<IActionResult> CreateAsync([FromBody] CreateOrderDto order)
     {
         var command = new CreateOrderCommand(order);
         var result  = await sender.Send(command);

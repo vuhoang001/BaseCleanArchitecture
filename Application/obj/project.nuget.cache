@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "rvwr4856i64=",
+  "dgSpecHash": "N1nK1uIKWlU=",
   "success": true,
   "projectFilePath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Application\\Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\foxai\\.nuget\\packages\\fluentvalidation\\11.0.2\\fluentvalidation.11.0.2.nupkg.sha512",
+    "C:\\Users\\foxai\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.0.2\\fluentvalidation.dependencyinjectionextensions.11.0.2.nupkg.sha512",
     "C:\\Users\\foxai\\.nuget\\packages\\mediatr\\12.2.0\\mediatr.12.2.0.nupkg.sha512",
     "C:\\Users\\foxai\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\foxai\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.7\\microsoft.entityframeworkcore.9.0.7.nupkg.sha512",

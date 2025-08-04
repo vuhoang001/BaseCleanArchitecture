@@ -1,3 +1,5 @@
-﻿namespace Application.Order.Commands.Create;
+﻿using Application.Dtos;
 
-public record CreateOrderCommand(Domain.Entities.Order Order) : ICommand<bool>;
+namespace Application.Order.Commands.Create;
+
+public record CreateOrderCommand(CreateOrderDto Order) : ICommand<bool>;

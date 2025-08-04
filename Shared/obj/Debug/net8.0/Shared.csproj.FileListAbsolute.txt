@@ -10,3 +10,4 @@ D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Shared\obj\Debug\net8.0\Shared.dll
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Shared\obj\Debug\net8.0\refint\Shared.dll
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Shared\obj\Debug\net8.0\Shared.pdb
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Shared\obj\Debug\net8.0\ref\Shared.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Shared\obj\Debug\net8.0\Shared.sourcelink.json

@@ -1,17 +1,31 @@
 ﻿namespace Application.Dtos;
 
-public class CreateOrderDto
+public record CreateOrderDto
 {
-    public string Code { get; set; } = "";
-    public string Name { get; set; } = "";
-    public decimal TotalPrice { get; set; }
-    public List<OrderItemDto> OrderItems { get; set; } = [];
+    /// <summary>Mã đơn hàng</summary>
+    public string Code { get; init; } = "";
+
+    /// <summary>Tên đơn hàng</summary>
+    public string Name { get; init; } = "";
+
+    /// <summary>Tổng giá trị đơn hàng</summary>
+    public decimal TotalPrice { get; init; }
+
+    /// <summary>Danh sách sản phẩm trong đơn hàng</summary>
+    public List<OrderItemDto> OrderItems { get; init; } = new();
 }
 
-public class OrderItemDto
+public record OrderItemDto
 {
-    public string ProductCode { get; set; } = "";
-    public string ProductName { get; set; } = "";
-    public decimal Quantity { get; set; }
-    public decimal UnitPrice { get; set; }
+    /// <summary>Mã sản phẩm</summary>
+    public string ProductCode { get; init; } = "";
+
+    /// <summary>Tên sản phẩm</summary>
+    public string ProductName { get; init; } = "";
+
+    /// <summary>Số lượng</summary>
+    public decimal Quantity { get; init; }
+
+    /// <summary>Đơn giá</summary>
+    public decimal UnitPrice { get; init; }
 }

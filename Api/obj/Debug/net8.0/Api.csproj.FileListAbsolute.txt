@@ -177,3 +177,14 @@ D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\zh-Hant\Microso
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\System.ClientModel.dll
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\System.Formats.Asn1.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\obj\Debug\net8.0\Api.sourcelink.json
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Scrutor.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\FluentValidation.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

@@ -6,7 +6,11 @@ public class CreateOrderHandler(IApplicationDbContext context) : ICommandHandler
 {
     public async Task<bool> Handle(CreateOrderCommand handle, CancellationToken cancellationToken)
     {
-        context.Orders.Add(handle.Order);
+        var order = new Domain.Entities.Order(handle.Order.Code, handle.Order.Name);
+        handle.Order.OrderItems.ForEach(x => order.AddItem(x.ProductCode, x.ProductName, x.Quantity, x.UnitPrice));
+
+        context.Orders.Add(order);
+
         await context.SaveChangesAsync(cancellationToken);
         return true;
     }

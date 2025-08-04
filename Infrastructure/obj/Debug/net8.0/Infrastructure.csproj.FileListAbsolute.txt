@@ -19,3 +19,4 @@ D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Infrastructure\bin\Debug\net8.0\Shar
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Infrastructure\bin\Debug\net8.0\Application.pdb
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Infrastructure\bin\Debug\net8.0\Shared.pdb
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
