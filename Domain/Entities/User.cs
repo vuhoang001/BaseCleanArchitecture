@@ -11,8 +11,6 @@ public class User : Entity<string>
         if (userName == null || email == null) throw new ArgumentNullException();
         if (id is null) Id = Guid.NewGuid().ToString();
         else Id            = id;
-
-
         UserName = userName;
         Email    = email;
     }

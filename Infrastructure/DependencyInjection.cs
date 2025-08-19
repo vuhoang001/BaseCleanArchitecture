@@ -1,11 +1,15 @@
 ﻿using System.Text;
 using Application.Data;
+using Application.Dtos;
 using Application.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Data.Interceptors;
 using Infrastructure.Idenitty;
 using Infrastructure.Idenitty.Mapper;
 using Infrastructure.Services;
+using Infrastructure.Services.Mail;
+using Infrastructure.Services.Order;
+using Infrastructure.Services.PurchasePlan;
 using Infrastructure.Services.User;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +17,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Shared.Interfaces;
 
 namespace Infrastructure;
 
@@ -27,6 +32,7 @@ public static class DependencyInjection
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
+
         services.AddDbContext<ApplicationDbContext>((sb, options) =>
         {
             if (connectString is null) throw new ArgumentNullException(nameof(connectString));
@@ -36,6 +42,7 @@ public static class DependencyInjection
 
         services.AddHttpContextAccessor();
         services.AddScoped<IUserContext, UserContext>();
+        services.AddScoped<IUserContextService, UserContext>();
 
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
         services.AddScoped<IUserRepository, UserRepository>();
@@ -43,15 +50,19 @@ public static class DependencyInjection
 
 
         services.AddAuth(configuration);
+        services.AddServices(configuration);
         return services;
     }
 
     private static void AddAuth(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
-
         var jwtSettings = configuration.GetSection(JwtSettings.SectionName).Get<JwtSettings>()
             ?? throw new ArgumentNullException(nameof(JwtSettings));
+
+        services.Configure<GoogleSettings>(configuration.GetSection(GoogleSettings.SectionName));
+        var googleSettings = configuration.GetSection(GoogleSettings.SectionName).Get<GoogleSettings>()
+            ?? throw new ArgumentNullException(nameof(GoogleSettings));
 
         var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
 
@@ -75,22 +86,17 @@ public static class DependencyInjection
                 };
                 options.Events = new JwtBearerEvents
                 {
-                    OnAuthenticationFailed = ctx =>
-                    {
-                        Console.WriteLine($"Auth failed: {ctx.Exception}");
-                        return Task.CompletedTask;
-                    },
-                    OnTokenValidated = ctx =>
-                    {
-                        Console.WriteLine("Token valid!");
-                        return Task.CompletedTask;
-                    },
-                    OnChallenge = ctx =>
-                    {
-                        Console.WriteLine("Auth challenge triggered");
-                        return Task.CompletedTask;
-                    }
+                    OnAuthenticationFailed = _ => { return Task.CompletedTask; },
+                    OnTokenValidated       = _ => { return Task.CompletedTask; },
+                    OnChallenge            = _ => { return Task.CompletedTask; }
                 };
+            }).AddGoogle(options =>
+            {
+                options.ClientId     = googleSettings.ClientId;
+                options.ClientSecret = googleSettings.ClientSecret;
+                options.CallbackPath = GoogleSettings.SectionName;
+
+                options.SaveTokens = true;
             });
 
         services.AddIdentityCore<ApplicationUser>()
@@ -99,5 +105,16 @@ public static class DependencyInjection
             .AddDefaultTokenProviders();
 
         services.AddScoped<IJwtService, JwtService>();
+    }
+
+    private static void AddServices(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<EmailSettings>(configuration.GetSection(EmailSettings.SectionName));
+        var _ = configuration.GetSection(EmailSettings.SectionName).Get<EmailSettings>()
+            ?? throw new ArgumentNullException(nameof(EmailSettings));
+
+        services.AddScoped<IOrderRepository, OrderRepos>();
+        services.AddScoped<IPurchasePlanRepos, PurchasePlanRepos>();
+        services.AddScoped<IMailService, MailService>();
     }
 }

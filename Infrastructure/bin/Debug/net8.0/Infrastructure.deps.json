@@ -10,6 +10,7 @@
         "dependencies": {
           "Application": "1.0.0",
           "Domain": "1.0.0",
+          "MailKit": "4.12.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.7",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.7",
@@ -28,8 +29,8 @@
           "System.Diagnostics.DiagnosticSource": "9.0.7",
           "System.Memory.Data": "1.0.2",
           "System.Numerics.Vectors": "4.5.0",
-          "System.Text.Encodings.Web": "9.0.7",
-          "System.Text.Json": "9.0.7",
+          "System.Text.Encodings.Web": "9.0.8",
+          "System.Text.Json": "9.0.8",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "runtime": {
@@ -46,13 +47,21 @@
           "Microsoft.Identity.Client.Extensions.Msal": "4.61.3",
           "System.Memory": "4.5.4",
           "System.Security.Cryptography.ProtectedData": "6.0.0",
-          "System.Text.Json": "9.0.7",
+          "System.Text.Json": "9.0.8",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "runtime": {
           "lib/netstandard2.0/Azure.Identity.dll": {
             "assemblyVersion": "1.11.4.0",
             "fileVersion": "1.1100.424.31005"
+          }
+        }
+      },
+      "BouncyCastle.Cryptography/2.5.1": {
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.5.1.28965"
           }
         }
       },
@@ -81,6 +90,18 @@
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
+          }
+        }
+      },
+      "MailKit/4.12.1": {
+        "dependencies": {
+          "MimeKit": "4.12.0",
+          "System.Formats.Asn1": "9.0.7"
+        },
+        "runtime": {
+          "lib/net8.0/MailKit.dll": {
+            "assemblyVersion": "4.12.0.0",
+            "fileVersion": "4.12.1.0"
           }
         }
       },
@@ -332,7 +353,7 @@
           "Microsoft.Bcl.AsyncInterfaces": "7.0.0",
           "Microsoft.CodeAnalysis.Common": "4.8.0",
           "System.Composition": "7.0.0",
-          "System.IO.Pipelines": "9.0.7",
+          "System.IO.Pipelines": "9.0.8",
           "System.Threading.Channels": "7.0.0"
         },
         "runtime": {
@@ -388,7 +409,7 @@
           "Microsoft.Build.Framework": "17.8.3",
           "Microsoft.CodeAnalysis.Common": "4.8.0",
           "Microsoft.CodeAnalysis.Workspaces.Common": "4.8.0",
-          "System.Text.Json": "9.0.7"
+          "System.Text.Json": "9.0.8"
         },
         "runtime": {
           "lib/net7.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll": {
@@ -456,7 +477,7 @@
           "System.Security.Cryptography.Cng": "5.0.0",
           "System.Security.Principal.Windows": "5.0.0",
           "System.Text.Encoding.CodePages": "6.0.0",
-          "System.Text.Encodings.Web": "9.0.7"
+          "System.Text.Encodings.Web": "9.0.8"
         },
         "runtime": {
           "lib/net6.0/Microsoft.Data.SqlClient.dll": {
@@ -540,7 +561,7 @@
           "Microsoft.Extensions.DependencyModel": "9.0.7",
           "Microsoft.Extensions.Logging": "9.0.7",
           "Mono.TextTemplating": "3.0.0",
-          "System.Text.Json": "9.0.7"
+          "System.Text.Json": "9.0.8"
         },
         "runtime": {
           "lib/net8.0/Microsoft.EntityFrameworkCore.Design.dll": {
@@ -571,7 +592,7 @@
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.7",
           "Microsoft.Extensions.Logging": "9.0.7",
           "System.Formats.Asn1": "9.0.7",
-          "System.Text.Json": "9.0.7"
+          "System.Text.Json": "9.0.8"
         },
         "runtime": {
           "lib/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
@@ -654,8 +675,8 @@
       },
       "Microsoft.Extensions.DependencyModel/9.0.7": {
         "dependencies": {
-          "System.Text.Encodings.Web": "9.0.7",
-          "System.Text.Json": "9.0.7"
+          "System.Text.Encodings.Web": "9.0.8",
+          "System.Text.Json": "9.0.8"
         },
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.DependencyModel.dll": {
@@ -848,6 +869,18 @@
           }
         }
       },
+      "MimeKit/4.12.0": {
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.5.1",
+          "System.Security.Cryptography.Pkcs": "8.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/MimeKit.dll": {
+            "assemblyVersion": "4.12.0.0",
+            "fileVersion": "4.12.0.0"
+          }
+        }
+      },
       "Mono.TextTemplating/3.0.0": {
         "dependencies": {
           "System.CodeDom": "6.0.0"
@@ -874,7 +907,7 @@
       "System.ClientModel/1.0.0": {
         "dependencies": {
           "System.Memory.Data": "1.0.2",
-          "System.Text.Json": "9.0.7"
+          "System.Text.Json": "9.0.8"
         },
         "runtime": {
           "lib/net6.0/System.ClientModel.dll": {
@@ -1017,19 +1050,19 @@
           }
         }
       },
-      "System.IO.Pipelines/9.0.7": {
+      "System.IO.Pipelines/9.0.8": {
         "runtime": {
           "lib/net8.0/System.IO.Pipelines.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.725.31616"
+            "fileVersion": "9.0.825.36511"
           }
         }
       },
       "System.Memory/4.5.4": {},
       "System.Memory.Data/1.0.2": {
         "dependencies": {
-          "System.Text.Encodings.Web": "9.0.7",
-          "System.Text.Json": "9.0.7"
+          "System.Text.Encodings.Web": "9.0.8",
+          "System.Text.Json": "9.0.8"
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.Data.dll": {
@@ -1070,6 +1103,22 @@
           "System.Formats.Asn1": "9.0.7"
         }
       },
+      "System.Security.Cryptography.Pkcs/8.0.1": {
+        "runtime": {
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1024.46610"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1024.46610"
+          }
+        }
+      },
       "System.Security.Cryptography.ProtectedData/6.0.0": {
         "runtime": {
           "lib/net6.0/System.Security.Cryptography.ProtectedData.dll": {
@@ -1104,11 +1153,11 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         }
       },
-      "System.Text.Encodings.Web/9.0.7": {
+      "System.Text.Encodings.Web/9.0.8": {
         "runtime": {
           "lib/net8.0/System.Text.Encodings.Web.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.725.31616"
+            "fileVersion": "9.0.825.36511"
           }
         },
         "runtimeTargets": {
@@ -1116,19 +1165,19 @@
             "rid": "browser",
             "assetType": "runtime",
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.725.31616"
+            "fileVersion": "9.0.825.36511"
           }
         }
       },
-      "System.Text.Json/9.0.7": {
+      "System.Text.Json/9.0.8": {
         "dependencies": {
-          "System.IO.Pipelines": "9.0.7",
-          "System.Text.Encodings.Web": "9.0.7"
+          "System.IO.Pipelines": "9.0.8",
+          "System.Text.Encodings.Web": "9.0.8"
         },
         "runtime": {
           "lib/net8.0/System.Text.Json.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.725.31616"
+            "fileVersion": "9.0.825.36511"
           }
         }
       },
@@ -1183,7 +1232,8 @@
           "FluentValidation": "11.0.2",
           "FluentValidation.DependencyInjectionExtensions": "11.0.2",
           "MediatR": "12.2.0",
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.7"
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.7",
+          "System.Text.Json": "9.0.8"
         },
         "runtime": {
           "Shared.dll": {
@@ -1214,6 +1264,13 @@
       "path": "azure.identity/1.11.4",
       "hashPath": "azure.identity.1.11.4.nupkg.sha512"
     },
+    "BouncyCastle.Cryptography/2.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zy8TMeTP+1FH2NrLaNZtdRbBdq7u5MI+NFZQOBSM69u5RFkciinwzV2eveY6Kjf5MzgsYvvl6kTStsj3JrXqkg==",
+      "path": "bouncycastle.cryptography/2.5.1",
+      "hashPath": "bouncycastle.cryptography.2.5.1.nupkg.sha512"
+    },
     "FluentValidation/11.0.2": {
       "type": "package",
       "serviceable": true,
@@ -1234,6 +1291,13 @@
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
+    },
+    "MailKit/4.12.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rIqJm92qtHvk1hDchsJ95Hy7n46A7imE24ol++ikXBsjf3Bi1qDBu4H91FfY6LrYXJaxRlc2gIIpC8AOJrCbqg==",
+      "path": "mailkit/4.12.1",
+      "hashPath": "mailkit.4.12.1.nupkg.sha512"
     },
     "MediatR/12.2.0": {
       "type": "package",
@@ -1564,6 +1628,13 @@
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
     },
+    "MimeKit/4.12.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PFUHfs6BZxKYM/QPJksAwXphbJf0SEfdSfsoQ6p6yvFRaJPofFJMBiotWhFRrdSUzfp6C6K49EjBIqIwZ2TJqA==",
+      "path": "mimekit/4.12.0",
+      "hashPath": "mimekit.4.12.0.nupkg.sha512"
+    },
     "Mono.TextTemplating/3.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1676,12 +1747,12 @@
       "path": "system.identitymodel.tokens.jwt/7.1.2",
       "hashPath": "system.identitymodel.tokens.jwt.7.1.2.nupkg.sha512"
     },
-    "System.IO.Pipelines/9.0.7": {
+    "System.IO.Pipelines/9.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-I9KHYFNKQkufs/Ec7evpPPSu2HkuW+jNpq1kT0WOWjzuN6BjxRYy7CuWNLjQmuBzcKd9vKrHaPGcHVxSF5DadQ==",
-      "path": "system.io.pipelines/9.0.7",
-      "hashPath": "system.io.pipelines.9.0.7.nupkg.sha512"
+      "sha512": "sha512-6vPmJt73mgUo1gzc/OcXlJvClz/2jxZ4TQPRfriVaLoGRH2mye530D9WHJYbFQRNMxF3PWCoeofsFdCyN7fLzA==",
+      "path": "system.io.pipelines/9.0.8",
+      "hashPath": "system.io.pipelines.9.0.8.nupkg.sha512"
     },
     "System.Memory/4.5.4": {
       "type": "package",
@@ -1739,6 +1810,13 @@
       "path": "system.security.cryptography.cng/5.0.0",
       "hashPath": "system.security.cryptography.cng.5.0.0.nupkg.sha512"
     },
+    "System.Security.Cryptography.Pkcs/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA==",
+      "path": "system.security.cryptography.pkcs/8.0.1",
+      "hashPath": "system.security.cryptography.pkcs.8.0.1.nupkg.sha512"
+    },
     "System.Security.Cryptography.ProtectedData/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1767,19 +1845,19 @@
       "path": "system.text.encoding.codepages/6.0.0",
       "hashPath": "system.text.encoding.codepages.6.0.0.nupkg.sha512"
     },
-    "System.Text.Encodings.Web/9.0.7": {
+    "System.Text.Encodings.Web/9.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WswuKENaV4gC4ZYZi8BhehJHHRdyZQzXEYv/lV8DHW9FwkdnKaTutdRbK/S1wHZtKUUzzptBPAX2XOxdoURkMw==",
-      "path": "system.text.encodings.web/9.0.7",
-      "hashPath": "system.text.encodings.web.9.0.7.nupkg.sha512"
+      "sha512": "sha512-W+LotQsM4wBJ4PG7uRkyul4wqL4Fz7R4ty6uXrCNZUhbaHYANgrPaYR2ZpMVpdCjQEJ17Jr1NMN8hv4SHaHY4A==",
+      "path": "system.text.encodings.web/9.0.8",
+      "hashPath": "system.text.encodings.web.9.0.8.nupkg.sha512"
     },
-    "System.Text.Json/9.0.7": {
+    "System.Text.Json/9.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-u/lN2FEEXs3ghj2ta8tWA4r2MS9Yni07K7jDmnz8h1UPDf0lIIIEMkWx383Zz4fJjJio7gDl+00RYuQ/7R8ZQw==",
-      "path": "system.text.json/9.0.7",
-      "hashPath": "system.text.json.9.0.7.nupkg.sha512"
+      "sha512": "sha512-mIQir9jBqk0V7X0Nw5hzPJZC8DuGdf+2DS3jAVsr6rq5+/VyH5rza0XGcONJUWBrZ+G6BCwNyjWYd9lncBu48A==",
+      "path": "system.text.json/9.0.8",
+      "hashPath": "system.text.json.9.0.8.nupkg.sha512"
     },
     "System.Threading.Channels/7.0.0": {
       "type": "package",

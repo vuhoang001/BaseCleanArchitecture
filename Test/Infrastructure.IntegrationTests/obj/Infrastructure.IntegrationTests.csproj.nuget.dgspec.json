@@ -1,0 +1,505 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Test\\Infrastructure.IntegrationTests\\Infrastructure.IntegrationTests.csproj": {}
+  },
+  "projects": {
+    "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Api\\Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Api\\Api.csproj",
+        "projectName": "Api",
+        "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Api\\Api.csproj",
+        "packagesPath": "C:\\Users\\foxai\\.nuget\\packages\\",
+        "outputPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\foxai\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Application\\Application.csproj": {
+                "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Application\\Application.csproj"
+              },
+              "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Infrastructure\\Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Application\\Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Application\\Application.csproj",
+        "projectName": "Application",
+        "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\foxai\\.nuget\\packages\\",
+        "outputPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\foxai\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Domain\\Domain.csproj"
+              },
+              "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Shared\\Shared.csproj": {
+                "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Shared\\Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\foxai\\.nuget\\packages\\",
+        "outputPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\foxai\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Infrastructure\\Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Infrastructure\\Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\foxai\\.nuget\\packages\\",
+        "outputPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\foxai\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Application\\Application.csproj": {
+                "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Application\\Application.csproj"
+              },
+              "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Domain\\Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.70.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.12.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[8.0.19, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Scrutor": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Shared\\Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Shared\\Shared.csproj",
+        "projectName": "Shared",
+        "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Shared\\Shared.csproj",
+        "packagesPath": "C:\\Users\\foxai\\.nuget\\packages\\",
+        "outputPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\foxai\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.0.2, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.0.2, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.2.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Test\\Infrastructure.IntegrationTests\\Infrastructure.IntegrationTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Test\\Infrastructure.IntegrationTests\\Infrastructure.IntegrationTests.csproj",
+        "projectName": "Infrastructure.IntegrationTests",
+        "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Test\\Infrastructure.IntegrationTests\\Infrastructure.IntegrationTests.csproj",
+        "packagesPath": "C:\\Users\\foxai\\.nuget\\packages\\",
+        "outputPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Test\\Infrastructure.IntegrationTests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\foxai\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Api\\Api.csproj": {
+                "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Api\\Api.csproj"
+              },
+              "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Application\\Application.csproj": {
+                "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Application\\Application.csproj"
+              },
+              "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Domain\\Domain.csproj"
+              },
+              "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "D:\\lanh_thoi_dung_mua\\BaseCleanArchitecture\\Infrastructure\\Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.8.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

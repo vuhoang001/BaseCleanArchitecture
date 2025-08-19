@@ -273,6 +273,18 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.70.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.12.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[8.0.19, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.7, )"
@@ -374,6 +386,10 @@
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
               "version": "[8.0.2, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.8, )"
             }
           },
           "imports": [

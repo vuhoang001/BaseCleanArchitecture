@@ -47,6 +47,19 @@
           }
         }
       },
+      "BouncyCastle.Cryptography/2.5.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "FluentValidation/11.0.2": {
         "type": "package",
         "compile": {
@@ -77,6 +90,56 @@
           }
         }
       },
+      "Google.Apis/1.70.0": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis.Core": "1.70.0"
+        },
+        "compile": {
+          "lib/net6.0/Google.Apis.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Google.Apis.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Google.Apis.Auth/1.70.0": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis": "1.70.0",
+          "Google.Apis.Core": "1.70.0",
+          "System.Management": "7.0.2"
+        },
+        "compile": {
+          "lib/net6.0/Google.Apis.Auth.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Google.Apis.Auth.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Google.Apis.Core/1.70.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "lib/net6.0/Google.Apis.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Google.Apis.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -87,6 +150,23 @@
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
             "related": ".xml"
+          }
+        }
+      },
+      "MailKit/4.12.1": {
+        "type": "package",
+        "dependencies": {
+          "MimeKit": "4.12.0",
+          "System.Formats.Asn1": "8.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MailKit.dll": {
+            "related": ".dll.config;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MailKit.dll": {
+            "related": ".dll.config;.pdb;.xml"
           }
         }
       },
@@ -119,6 +199,22 @@
             "related": ".xml"
           }
         }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/8.0.19": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.7": {
         "type": "package",
@@ -1119,6 +1215,23 @@
           }
         }
       },
+      "MimeKit/4.12.0": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.5.1",
+          "System.Security.Cryptography.Pkcs": "8.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MimeKit.dll": {
+            "related": ".dll.config;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MimeKit.dll": {
+            "related": ".dll.config;.pdb;.xml"
+          }
+        }
+      },
       "Mono.TextTemplating/3.0.0": {
         "type": "package",
         "dependencies": {
@@ -1132,6 +1245,19 @@
         },
         "build": {
           "buildTransitive/Mono.TextTemplating.targets": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Scrutor/6.1.0": {
@@ -1168,20 +1294,20 @@
           }
         }
       },
-      "System.CodeDom/6.0.0": {
+      "System.CodeDom/7.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net7.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/System.CodeDom.dll": {
+          "lib/net7.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Collections.Immutable/7.0.0": {
@@ -1378,7 +1504,7 @@
       "System.Formats.Asn1/9.0.7": {
         "type": "package",
         "compile": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/System.Formats.Asn1.dll": {
             "related": ".xml"
           }
         },
@@ -1408,7 +1534,7 @@
           }
         }
       },
-      "System.IO.Pipelines/9.0.7": {
+      "System.IO.Pipelines/9.0.8": {
         "type": "package",
         "compile": {
           "lib/net8.0/System.IO.Pipelines.dll": {
@@ -1422,6 +1548,31 @@
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "System.Management/7.0.2": {
+        "type": "package",
+        "dependencies": {
+          "System.CodeDom": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net7.0/System.Management.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Memory/4.5.4": {
@@ -1563,6 +1714,28 @@
           }
         }
       },
+      "System.Security.Cryptography.Pkcs/8.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "System.Security.Cryptography.ProtectedData/6.0.0": {
         "type": "package",
         "compile": {
@@ -1653,7 +1826,7 @@
           }
         }
       },
-      "System.Text.Encodings.Web/9.0.7": {
+      "System.Text.Encodings.Web/9.0.8": {
         "type": "package",
         "compile": {
           "lib/net8.0/System.Text.Encodings.Web.dll": {
@@ -1675,11 +1848,11 @@
           }
         }
       },
-      "System.Text.Json/9.0.7": {
+      "System.Text.Json/9.0.8": {
         "type": "package",
         "dependencies": {
-          "System.IO.Pipelines": "9.0.7",
-          "System.Text.Encodings.Web": "9.0.7"
+          "System.IO.Pipelines": "9.0.8",
+          "System.Text.Encodings.Web": "9.0.8"
         },
         "compile": {
           "lib/net8.0/System.Text.Json.dll": {
@@ -1778,7 +1951,8 @@
           "FluentValidation": "11.0.2",
           "FluentValidation.DependencyInjectionExtensions": "11.0.2",
           "MediatR": "12.2.0",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.2"
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
+          "System.Text.Json": "9.0.8"
         },
         "compile": {
           "bin/placeholder/Shared.dll": {}
@@ -1828,6 +2002,26 @@
         "lib/netstandard2.0/Azure.Identity.xml"
       ]
     },
+    "BouncyCastle.Cryptography/2.5.1": {
+      "sha512": "zy8TMeTP+1FH2NrLaNZtdRbBdq7u5MI+NFZQOBSM69u5RFkciinwzV2eveY6Kjf5MzgsYvvl6kTStsj3JrXqkg==",
+      "type": "package",
+      "path": "bouncycastle.cryptography/2.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "bouncycastle.cryptography.2.5.1.nupkg.sha512",
+        "bouncycastle.cryptography.nuspec",
+        "lib/net461/BouncyCastle.Cryptography.dll",
+        "lib/net461/BouncyCastle.Cryptography.xml",
+        "lib/net6.0/BouncyCastle.Cryptography.dll",
+        "lib/net6.0/BouncyCastle.Cryptography.xml",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
+        "packageIcon.png"
+      ]
+    },
     "FluentValidation/11.0.2": {
       "sha512": "ik/xogKqBmZWIURMXNEbugJlKka6iV9a4qckmKDp7sHSwIfgkZ/ewzCuAeUTkFdVZujfDW6mCLMjrrR6GG4xLQ==",
       "type": "package",
@@ -1866,6 +2060,72 @@
         "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.xml"
       ]
     },
+    "Google.Apis/1.70.0": {
+      "sha512": "K6VKPkHRN1P7pMb84eZu1rFyoie7LIYYsjTPvTnEH2lbscU1sBLR1C1MtsCoSJzgDIjr0yVGmSKnIC4D73ro1g==",
+      "type": "package",
+      "path": "google.apis/1.70.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NuGetIcon.png",
+        "google.apis.1.70.0.nupkg.sha512",
+        "google.apis.nuspec",
+        "lib/net462/Google.Apis.dll",
+        "lib/net462/Google.Apis.pdb",
+        "lib/net462/Google.Apis.xml",
+        "lib/net6.0/Google.Apis.dll",
+        "lib/net6.0/Google.Apis.pdb",
+        "lib/net6.0/Google.Apis.xml",
+        "lib/netstandard2.0/Google.Apis.dll",
+        "lib/netstandard2.0/Google.Apis.pdb",
+        "lib/netstandard2.0/Google.Apis.xml"
+      ]
+    },
+    "Google.Apis.Auth/1.70.0": {
+      "sha512": "2gnpcYUaD5WS2/2922J+ji1tEKcNtxu+aQoiNVWhfcGwDqgcc5vk6ND6591M2UaGzJn0EdH325rsNHzi/MvA/A==",
+      "type": "package",
+      "path": "google.apis.auth/1.70.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NuGetIcon.png",
+        "google.apis.auth.1.70.0.nupkg.sha512",
+        "google.apis.auth.nuspec",
+        "lib/net462/Google.Apis.Auth.dll",
+        "lib/net462/Google.Apis.Auth.pdb",
+        "lib/net462/Google.Apis.Auth.xml",
+        "lib/net6.0/Google.Apis.Auth.dll",
+        "lib/net6.0/Google.Apis.Auth.pdb",
+        "lib/net6.0/Google.Apis.Auth.xml",
+        "lib/netstandard2.0/Google.Apis.Auth.dll",
+        "lib/netstandard2.0/Google.Apis.Auth.pdb",
+        "lib/netstandard2.0/Google.Apis.Auth.xml"
+      ]
+    },
+    "Google.Apis.Core/1.70.0": {
+      "sha512": "R7Mbea2iB/TN+3BA1LPCqb1eT2HxnILJ+ASl5pdhHHc8uSe95JTTnM2DEVbVBQ3vo9/FpbBxWBRjP1ed9QK9CQ==",
+      "type": "package",
+      "path": "google.apis.core/1.70.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NuGetIcon.png",
+        "google.apis.core.1.70.0.nupkg.sha512",
+        "google.apis.core.nuspec",
+        "lib/net462/Google.Apis.Core.dll",
+        "lib/net462/Google.Apis.Core.pdb",
+        "lib/net462/Google.Apis.Core.xml",
+        "lib/net6.0/Google.Apis.Core.dll",
+        "lib/net6.0/Google.Apis.Core.pdb",
+        "lib/net6.0/Google.Apis.Core.xml",
+        "lib/netstandard2.0/Google.Apis.Core.dll",
+        "lib/netstandard2.0/Google.Apis.Core.pdb",
+        "lib/netstandard2.0/Google.Apis.Core.xml"
+      ]
+    },
     "Humanizer.Core/2.14.1": {
       "sha512": "lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "type": "package",
@@ -1882,6 +2142,46 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "MailKit/4.12.1": {
+      "sha512": "rIqJm92qtHvk1hDchsJ95Hy7n46A7imE24ol++ikXBsjf3Bi1qDBu4H91FfY6LrYXJaxRlc2gIIpC8AOJrCbqg==",
+      "type": "package",
+      "path": "mailkit/4.12.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "docs/ExchangeOAuth2.md",
+        "docs/FAQ.md",
+        "docs/GMailOAuth2.md",
+        "docs/README.md",
+        "icons/mailkit-50.png",
+        "lib/net462/MailKit.dll",
+        "lib/net462/MailKit.dll.config",
+        "lib/net462/MailKit.pdb",
+        "lib/net462/MailKit.xml",
+        "lib/net47/MailKit.dll",
+        "lib/net47/MailKit.dll.config",
+        "lib/net47/MailKit.pdb",
+        "lib/net47/MailKit.xml",
+        "lib/net48/MailKit.dll",
+        "lib/net48/MailKit.dll.config",
+        "lib/net48/MailKit.pdb",
+        "lib/net48/MailKit.xml",
+        "lib/net8.0/MailKit.dll",
+        "lib/net8.0/MailKit.dll.config",
+        "lib/net8.0/MailKit.pdb",
+        "lib/net8.0/MailKit.xml",
+        "lib/netstandard2.0/MailKit.dll",
+        "lib/netstandard2.0/MailKit.dll.config",
+        "lib/netstandard2.0/MailKit.pdb",
+        "lib/netstandard2.0/MailKit.xml",
+        "lib/netstandard2.1/MailKit.dll",
+        "lib/netstandard2.1/MailKit.dll.config",
+        "lib/netstandard2.1/MailKit.pdb",
+        "lib/netstandard2.1/MailKit.xml",
+        "mailkit.4.12.1.nupkg.sha512",
+        "mailkit.nuspec"
       ]
     },
     "MediatR/12.2.0": {
@@ -1912,6 +2212,21 @@
         "lib/netstandard2.0/MediatR.Contracts.xml",
         "mediatr.contracts.2.0.1.nupkg.sha512",
         "mediatr.contracts.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.Google/8.0.19": {
+      "sha512": "FbnDLVjNTfKOoh+qV61tzqB7Vjj4WbfBpeGeGPwv03q0QmvnD+idPJV8bAk39RNG1x9AbMPHebMeRdxcv2mk0g==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.google/8.0.19",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.dll",
+        "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.xml",
+        "microsoft.aspnetcore.authentication.google.8.0.19.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.google.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.7": {
@@ -3804,6 +4119,41 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "MimeKit/4.12.0": {
+      "sha512": "PFUHfs6BZxKYM/QPJksAwXphbJf0SEfdSfsoQ6p6yvFRaJPofFJMBiotWhFRrdSUzfp6C6K49EjBIqIwZ2TJqA==",
+      "type": "package",
+      "path": "mimekit/4.12.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "docs/FAQ.md",
+        "docs/README.md",
+        "icons/mimekit-50.png",
+        "lib/net462/MimeKit.dll",
+        "lib/net462/MimeKit.pdb",
+        "lib/net462/MimeKit.xml",
+        "lib/net47/MimeKit.dll",
+        "lib/net47/MimeKit.pdb",
+        "lib/net47/MimeKit.xml",
+        "lib/net48/MimeKit.dll",
+        "lib/net48/MimeKit.pdb",
+        "lib/net48/MimeKit.xml",
+        "lib/net8.0/MimeKit.dll",
+        "lib/net8.0/MimeKit.dll.config",
+        "lib/net8.0/MimeKit.pdb",
+        "lib/net8.0/MimeKit.xml",
+        "lib/netstandard2.0/MimeKit.dll",
+        "lib/netstandard2.0/MimeKit.dll.config",
+        "lib/netstandard2.0/MimeKit.pdb",
+        "lib/netstandard2.0/MimeKit.xml",
+        "lib/netstandard2.1/MimeKit.dll",
+        "lib/netstandard2.1/MimeKit.dll.config",
+        "lib/netstandard2.1/MimeKit.pdb",
+        "lib/netstandard2.1/MimeKit.xml",
+        "mimekit.4.12.0.nupkg.sha512",
+        "mimekit.nuspec"
+      ]
+    },
     "Mono.TextTemplating/3.0.0": {
       "sha512": "YqueG52R/Xej4VVbKuRIodjiAhV0HR/XVbLbNrJhCZnzjnSjgMJ/dCdV0akQQxavX6hp/LC6rqLGLcXeQYU7XA==",
       "type": "package",
@@ -3819,6 +4169,36 @@
         "mono.texttemplating.3.0.0.nupkg.sha512",
         "mono.texttemplating.nuspec",
         "readme.md"
+      ]
+    },
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
       ]
     },
     "Scrutor/6.1.0": {
@@ -3860,25 +4240,29 @@
         "system.clientmodel.nuspec"
       ]
     },
-    "System.CodeDom/6.0.0": {
-      "sha512": "CPc6tWO1LAer3IzfZufDBRL+UZQcj5uS207NHALQzP84Vp/z6wF0Aa0YZImOQY8iStY0A2zI/e3ihKNPfUm8XA==",
+    "System.CodeDom/7.0.0": {
+      "sha512": "GLltyqEsE5/3IE+zYRP5sNa1l44qKl9v+bfdMcwg+M9qnQf47wK3H0SUR/T+3N4JEQXF3vV4CSuuo0rsg+nq2A==",
       "type": "package",
-      "path": "system.codedom/6.0.0",
+      "path": "system.codedom/7.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.CodeDom.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
         "buildTransitive/netcoreapp2.0/System.CodeDom.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.CodeDom.dll",
-        "lib/net461/System.CodeDom.xml",
+        "lib/net462/System.CodeDom.dll",
+        "lib/net462/System.CodeDom.xml",
         "lib/net6.0/System.CodeDom.dll",
         "lib/net6.0/System.CodeDom.xml",
+        "lib/net7.0/System.CodeDom.dll",
+        "lib/net7.0/System.CodeDom.xml",
         "lib/netstandard2.0/System.CodeDom.dll",
         "lib/netstandard2.0/System.CodeDom.xml",
-        "system.codedom.6.0.0.nupkg.sha512",
+        "system.codedom.7.0.0.nupkg.sha512",
         "system.codedom.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -4210,10 +4594,10 @@
         "system.identitymodel.tokens.jwt.nuspec"
       ]
     },
-    "System.IO.Pipelines/9.0.7": {
-      "sha512": "I9KHYFNKQkufs/Ec7evpPPSu2HkuW+jNpq1kT0WOWjzuN6BjxRYy7CuWNLjQmuBzcKd9vKrHaPGcHVxSF5DadQ==",
+    "System.IO.Pipelines/9.0.8": {
+      "sha512": "6vPmJt73mgUo1gzc/OcXlJvClz/2jxZ4TQPRfriVaLoGRH2mye530D9WHJYbFQRNMxF3PWCoeofsFdCyN7fLzA==",
       "type": "package",
-      "path": "system.io.pipelines/9.0.7",
+      "path": "system.io.pipelines/9.0.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4233,8 +4617,36 @@
         "lib/net9.0/System.IO.Pipelines.xml",
         "lib/netstandard2.0/System.IO.Pipelines.dll",
         "lib/netstandard2.0/System.IO.Pipelines.xml",
-        "system.io.pipelines.9.0.7.nupkg.sha512",
+        "system.io.pipelines.9.0.8.nupkg.sha512",
         "system.io.pipelines.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Management/7.0.2": {
+      "sha512": "/qEUN91mP/MUQmJnM5y5BdT7ZoPuVrtxnFlbJ8a3kBJGhe2wCzBfnPFtK2wTtEEcf3DMGR9J00GZZfg6HRI6yA==",
+      "type": "package",
+      "path": "system.management/7.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Management.targets",
+        "lib/net462/_._",
+        "lib/net6.0/System.Management.dll",
+        "lib/net6.0/System.Management.xml",
+        "lib/net7.0/System.Management.dll",
+        "lib/net7.0/System.Management.xml",
+        "lib/netstandard2.0/System.Management.dll",
+        "lib/netstandard2.0/System.Management.xml",
+        "runtimes/win/lib/net6.0/System.Management.dll",
+        "runtimes/win/lib/net6.0/System.Management.xml",
+        "runtimes/win/lib/net7.0/System.Management.dll",
+        "runtimes/win/lib/net7.0/System.Management.xml",
+        "system.management.7.0.2.nupkg.sha512",
+        "system.management.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
@@ -4526,6 +4938,43 @@
         "version.txt"
       ]
     },
+    "System.Security.Cryptography.Pkcs/8.0.1": {
+      "sha512": "CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA==",
+      "type": "package",
+      "path": "system.security.cryptography.pkcs/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Security.Cryptography.Pkcs.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Security.Cryptography.Pkcs.targets",
+        "lib/net462/System.Security.Cryptography.Pkcs.dll",
+        "lib/net462/System.Security.Cryptography.Pkcs.xml",
+        "lib/net6.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/net6.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/net7.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/net7.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/net8.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/net8.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/netstandard2.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/netstandard2.1/System.Security.Cryptography.Pkcs.dll",
+        "lib/netstandard2.1/System.Security.Cryptography.Pkcs.xml",
+        "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.xml",
+        "runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.xml",
+        "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.xml",
+        "system.security.cryptography.pkcs.8.0.1.nupkg.sha512",
+        "system.security.cryptography.pkcs.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Security.Cryptography.ProtectedData/6.0.0": {
       "sha512": "rp1gMNEZpvx9vP0JW0oHLxlf8oSiQgtno77Y4PLUBjSiDYoD77Y8uXHr1Ea5XG4/pIKhqAdxZ8v8OTUtqo9PeQ==",
       "type": "package",
@@ -4684,10 +5133,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Text.Encodings.Web/9.0.7": {
-      "sha512": "WswuKENaV4gC4ZYZi8BhehJHHRdyZQzXEYv/lV8DHW9FwkdnKaTutdRbK/S1wHZtKUUzzptBPAX2XOxdoURkMw==",
+    "System.Text.Encodings.Web/9.0.8": {
+      "sha512": "W+LotQsM4wBJ4PG7uRkyul4wqL4Fz7R4ty6uXrCNZUhbaHYANgrPaYR2ZpMVpdCjQEJ17Jr1NMN8hv4SHaHY4A==",
       "type": "package",
-      "path": "system.text.encodings.web/9.0.7",
+      "path": "system.text.encodings.web/9.0.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4711,15 +5160,15 @@
         "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.xml",
         "runtimes/browser/lib/net9.0/System.Text.Encodings.Web.dll",
         "runtimes/browser/lib/net9.0/System.Text.Encodings.Web.xml",
-        "system.text.encodings.web.9.0.7.nupkg.sha512",
+        "system.text.encodings.web.9.0.8.nupkg.sha512",
         "system.text.encodings.web.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Text.Json/9.0.7": {
-      "sha512": "u/lN2FEEXs3ghj2ta8tWA4r2MS9Yni07K7jDmnz8h1UPDf0lIIIEMkWx383Zz4fJjJio7gDl+00RYuQ/7R8ZQw==",
+    "System.Text.Json/9.0.8": {
+      "sha512": "mIQir9jBqk0V7X0Nw5hzPJZC8DuGdf+2DS3jAVsr6rq5+/VyH5rza0XGcONJUWBrZ+G6BCwNyjWYd9lncBu48A==",
       "type": "package",
-      "path": "system.text.json/9.0.7",
+      "path": "system.text.json/9.0.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4782,7 +5231,7 @@
         "lib/net9.0/System.Text.Json.xml",
         "lib/netstandard2.0/System.Text.Json.dll",
         "lib/netstandard2.0/System.Text.Json.xml",
-        "system.text.json.9.0.7.nupkg.sha512",
+        "system.text.json.9.0.8.nupkg.sha512",
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -4896,6 +5345,9 @@
     "net8.0": [
       "Application >= 1.0.0",
       "Domain >= 1.0.0",
+      "Google.Apis.Auth >= 1.70.0",
+      "MailKit >= 4.12.1",
+      "Microsoft.AspNetCore.Authentication.Google >= 8.0.19",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.7",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.2",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.7",
@@ -4953,6 +5405,18 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Google.Apis.Auth": {
+            "target": "Package",
+            "version": "[1.70.0, )"
+          },
+          "MailKit": {
+            "target": "Package",
+            "version": "[4.12.1, )"
+          },
+          "Microsoft.AspNetCore.Authentication.Google": {
+            "target": "Package",
+            "version": "[8.0.19, )"
+          },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[8.0.7, )"

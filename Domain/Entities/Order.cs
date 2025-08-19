@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities;
+﻿using Domain.Events.Order;
+
+namespace Domain.Entities;
 
 public class Order : Aggregate<string>
 {
@@ -15,11 +17,55 @@ public class Order : Aggregate<string>
     {
     }
 
-    public Order(string code, string name)
+    public Order(string code, string name,
+        IEnumerable<(string itemCode, string itemName, decimal quantity, decimal unitPrice)> items)
     {
         Id   = Guid.NewGuid().ToString();
         Code = code;
         Name = name;
+
+        foreach (var item in items)
+        {
+            AddItem(item.itemCode, item.itemName, item.quantity, item.unitPrice);
+        }
+    }
+
+    public void Add(string code, string name,
+        IEnumerable<(string itemCode, string itemName, decimal quantity, decimal unitPrice)> items)
+    {
+        Id   = Guid.NewGuid().ToString();
+        Code = code;
+        Name = name;
+
+        foreach (var item in items)
+        {
+            AddItem(item.itemCode, item.itemName, item.quantity, item.unitPrice);
+        }
+
+    }
+
+    public void Update(string name,
+        IEnumerable<(string itemCode, string itemName, decimal quantity, decimal unitPrice)> items)
+    {
+        Name = name;
+
+        var orderItems = items.ToList();
+
+        var newProductsCodes = orderItems.Select(x => x.itemCode).ToList();
+        _orderItems.RemoveAll(x => !newProductsCodes.Contains(x.ProductCode));
+
+        foreach (var item in orderItems)
+        {
+            var existingItem = _orderItems.FirstOrDefault(x => x.ProductCode == item.itemCode);
+            if (existingItem != null)
+            {
+                existingItem.UpdateItem(item.quantity, item.unitPrice);
+            }
+            else
+            {
+                AddItem(item.itemCode, item.itemName, item.quantity, item.unitPrice);
+            }
+        }
     }
 
     public void AddItem(string productCode, string productName, decimal quanitty, decimal unitPrice)
@@ -39,6 +85,12 @@ public class OrderItem : Entity<string>
 
     private OrderItem()
     {
+    }
+
+    public void UpdateItem(decimal quantity, decimal unitPrice)
+    {
+        Quantity  = quantity;
+        UnitPrice = unitPrice;
     }
 
     public OrderItem(string fatherId, string productCode, string productName, decimal quantity, decimal unitPrice)

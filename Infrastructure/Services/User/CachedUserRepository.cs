@@ -9,7 +9,6 @@ public class CachedUserRepository(IUserRepository userRepository, IDistributedCa
     public async Task<Domain.Entities.User?> GetByIdAsync(string id)
     {
         var cached = await cache.GetStringAsync(id);
-
         if (!string.IsNullOrWhiteSpace(cached))
             return JsonSerializer.Deserialize<Domain.Entities.User>(cached);
 

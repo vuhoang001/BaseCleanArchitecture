@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Application.Interfaces;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,10 +14,13 @@ public static class DependencyInjection
         services.AddMediatR(config =>
         {
             config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            config.AddOpenBehavior(typeof(AuthorizeBehavior<,>));
             config.AddOpenBehavior(typeof(LoggingBehavior<,>));
             config.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+
         return services;
     }
 }

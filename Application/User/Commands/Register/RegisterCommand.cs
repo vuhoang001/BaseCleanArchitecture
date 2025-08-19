@@ -2,4 +2,4 @@
 
 namespace Application.User.Commands.Register;
 
-public record RegisterCommand(RegisterDto Login) : ICommand<string>;
+public record RegisterCommand(CreateRegisterRequest Login) : ICommand<string>;

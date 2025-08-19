@@ -17,10 +17,10 @@ public class ApplicationDbContext :
 
     public DbSet<Order> Orders => Set<Order>();
     public DbSet<OrderItem> OrderItem => Set<OrderItem>();
-    public DbSet<ApprovalLevel> ApprovalLevel => Set<ApprovalLevel>();
+
     public DbSet<OrgLevel> OrgLevel => Set<OrgLevel>();
-    public DbSet<PurchaseRequest> PurchaseRequest => Set<PurchaseRequest>();
-    public DbSet<PurchaseRequestItems> PurchaseRequestItems => Set<PurchaseRequestItems>();
+    public DbSet<PurchasePlan> PurchasePlan => Set<PurchasePlan>();
+    public DbSet<PurchasePlanLine> PurchasePlanLine => Set<PurchasePlanLine>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

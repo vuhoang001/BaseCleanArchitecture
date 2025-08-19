@@ -1,17 +1,20 @@
-﻿using Application.Data;
+﻿using Application.Interfaces;
+using Domain.Events.Order;
+using Shared.ExceptionBase;
 
 namespace Application.Order.Commands.Create;
 
-public class CreateOrderHandler(IApplicationDbContext context) : ICommandHandler<CreateOrderCommand, bool>
+public class CreateOrderHandler(IOrderRepository orderRepository)
+    : ICommandHandler<CreateOrderCommand, Result<bool>>
 {
-    public async Task<bool> Handle(CreateOrderCommand handle, CancellationToken cancellationToken)
+    public async Task<Result<bool>> Handle(CreateOrderCommand handle, CancellationToken cancellationToken)
     {
-        var order = new Domain.Entities.Order(handle.Order.Code, handle.Order.Name);
-        handle.Order.OrderItems.ForEach(x => order.AddItem(x.ProductCode, x.ProductName, x.Quantity, x.UnitPrice));
+        var orderItems = handle.Order.OrderItems.Select(x => (x.ProductCode, x.ProductName, x.Quantity, x.UnitPrice));
+        var order      = new Domain.Entities.Order(handle.Order.Code, handle.Order.Name, orderItems);
+        order.AddDomainEvent(new OrderCreateProductEvent(order));
 
-        context.Orders.Add(order);
+        await orderRepository.CreateAsync(order);
 
-        await context.SaveChangesAsync(cancellationToken);
-        return true;
+        return Result<bool>.Success(true);
     }
 }

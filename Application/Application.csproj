@@ -17,8 +17,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="PurchaseRequest\EventHandlers\" />
-      <Folder Include="PurchaseRequest\Queries\" />
+      <Folder Include="OrgLevel\Queries\" />
+      <Folder Include="PurchasePlan\EventHandlers\" />
+      <Folder Include="PurchasePlan\Queries\" />
       <Folder Include="User\EventHandlers\" />
       <Folder Include="User\Queries\" />
     </ItemGroup>

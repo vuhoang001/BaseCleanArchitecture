@@ -1,9 +1,10 @@
-﻿using Application.Dtos;
+﻿using Application.Dtos.Response;
 using Application.Interfaces;
+using Shared.ExceptionBase;
 
 namespace Application.User.Commands.Login;
 
-public class LoginHandler : IRequestHandler<LoginCommand, LoginResponse>
+public class LoginHandler : IRequestHandler<LoginCommand, Result<LoginRegisteResponse>>
 {
     private readonly IUserRepository _userRepository;
     private readonly IJwtService     _jwtService;
@@ -14,20 +15,20 @@ public class LoginHandler : IRequestHandler<LoginCommand, LoginResponse>
         _jwtService     = jwtService;
     }
 
-    public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
+    public async Task<Result<LoginRegisteResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
         var existed = await _userRepository.GetByEmailAsync(request.LoginInfo.Email);
-        if (existed is null) throw new UnauthorizedAccessException();
+        if (existed is null) return Result<LoginRegisteResponse>.Failure("Tài khoản và mật khẩu không hợp nệ");
 
         var validPassword = await _userRepository.CheckPasswordAsync(existed, request.LoginInfo.Password);
-        if (!validPassword) throw new UnauthorizedAccessException();
+        if (!validPassword) return Result<LoginRegisteResponse>.Failure("Tài khoản hoặc mật khẩu không hợp lệ");
 
         var token = _jwtService.GenerateToken(existed);
 
-        return new LoginResponse
+        return Result<LoginRegisteResponse>.Success(new LoginRegisteResponse
         {
             AccessToken = token,
-            ExpiresAt   = DateTime.UtcNow.AddMinutes(30),
-        };
+            ExpiresIn   = 30
+        });
     }
 }

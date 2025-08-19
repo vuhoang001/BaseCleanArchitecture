@@ -13,18 +13,18 @@ namespace Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UserController(ISender sender) : ControllerBase
+public class UserController(ISender sender) : BaseController
 {
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest loginIn)
     {
         var req    = new LoginCommand(loginIn);
         var result = await sender.Send(req);
-        return Ok(result);
+        return HandleResult(result);
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterDto loginIn)
+    public async Task<IActionResult> Register([FromBody] CreateRegisterRequest loginIn)
     {
         var req    = new RegisterCommand(loginIn);
         var result = await sender.Send(req);
