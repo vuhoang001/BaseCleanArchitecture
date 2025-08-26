@@ -8,7 +8,7 @@ namespace Infrastructure.Services.User;
 
 public class UserRepository(ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager) : IUserRepository
 {
-    public async Task<Domain.Entities.User?> GetByIdAsync(string id)
+    public async Task<Domain.Entities.User?> GetByIdAsync(int id)
     {
         var user = await dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         if (user is null) return null;
@@ -24,6 +24,14 @@ public class UserRepository(ApplicationDbContext dbContext, UserManager<Applicat
 
         var result = UserMapper.ToDomain(user);
         return result;
+    }
+
+    public async Task<List<Domain.Entities.User>?> GetUsersByIds(List<int> ids)
+    {
+        var users  = await dbContext.Users.Where(x => ids.Contains(x.Id)).ToListAsync();
+        var result = users.Select(x => UserMapper.ToDomain(x));
+
+        return result.ToList();
     }
 
     public async Task CreateAsync(Domain.Entities.User user, string password)
@@ -49,7 +57,7 @@ public class UserRepository(ApplicationDbContext dbContext, UserManager<Applicat
 
     public async Task<bool> CheckPasswordAsync(Domain.Entities.User user, string password)
     {
-        var appUser = await userManager.FindByIdAsync(user.Id);
+        var appUser = await userManager.FindByEmailAsync(user.Email);
         if (appUser == null) return false;
         return await userManager.CheckPasswordAsync(appUser, password);
     }

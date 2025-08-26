@@ -2,7 +2,7 @@
 
 namespace Infrastructure.Idenitty.Mapper;
 
-public class ApplicationUserLogin : IdentityUserLogin<string>
+public class ApplicationUserLogin : IdentityUserLogin<int>
 {
     
 }

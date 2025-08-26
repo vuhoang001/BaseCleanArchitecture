@@ -383,3 +383,10 @@ D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\MailKit.dll
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\MimeKit.dll
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Google.Apis.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Google.Apis.Auth.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Google.Apis.Core.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\System.Management.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Api\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll

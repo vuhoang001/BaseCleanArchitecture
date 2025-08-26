@@ -2,7 +2,7 @@
 
 namespace Infrastructure.Idenitty.Mapper;
 
-public class ApplicationUserClaims : IdentityUserClaim<string>
+public class ApplicationUserClaims : IdentityUserClaim<int>
 {
     
 }

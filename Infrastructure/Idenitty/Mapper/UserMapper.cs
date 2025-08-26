@@ -1,6 +1,4 @@
-﻿using Infrastructure.Data.Interceptors;
-
-namespace Infrastructure.Idenitty.Mapper;
+﻿namespace Infrastructure.Idenitty.Mapper;
 
 public static class UserMapper
 {
@@ -17,7 +15,7 @@ public static class UserMapper
 
     public static User ToDomain(ApplicationUser aUser)
     {
-        var user = new User(aUser.Id, aUser.UserName!, aUser.Email!);
+        var user = new User(aUser.UserName!, aUser.Email!);
 
         if (aUser.IsActive) user.Active();
         else user.Deactive();

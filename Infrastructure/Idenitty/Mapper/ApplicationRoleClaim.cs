@@ -2,7 +2,7 @@
 
 namespace Infrastructure.Idenitty.Mapper;
 
-public class ApplicationRoleClaim : IdentityRoleClaim<string>
+public class ApplicationRoleClaim : IdentityRoleClaim<int>
 {
     
 }

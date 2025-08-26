@@ -7,6 +7,6 @@ public class PermissionAttribute : Attribute
 
     public PermissionAttribute(params string[] roleAndPermissions)
     {
-       RoleAndPermissions = roleAndPermissions; 
+        RoleAndPermissions = roleAndPermissions;
     }
 }

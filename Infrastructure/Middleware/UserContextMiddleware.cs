@@ -27,10 +27,10 @@ public class UserContextMiddleware
 
             if (userId is not null)
             {
-                var res = await userRepository.GetByIdAsync(userId);
+                var res = await userRepository.GetByIdAsync(int.Parse(userId));
                 if (res is not null)
                 {
-                    userContext.UserId   = res.Id;
+                    userContext.UserId   = res.Id.ToString();
                     userContext.Email    = res.Email;
                     userContext.UserName = res.UserName;
                 }

@@ -186,3 +186,15 @@ D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\obj\Debug\net8.0\Infrastructure.IntegrationTests.pdb
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\obj\Debug\net8.0\Infrastructure.IntegrationTests.genruntimeconfig.cache
 D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\obj\Debug\net8.0\ref\Infrastructure.IntegrationTests.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\Google.Apis.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\Google.Apis.Auth.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\Google.Apis.Core.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\MailKit.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\MimeKit.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\System.CodeDom.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\System.Management.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
+D:\lanh_thoi_dung_mua\BaseCleanArchitecture\Test\Infrastructure.IntegrationTests\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

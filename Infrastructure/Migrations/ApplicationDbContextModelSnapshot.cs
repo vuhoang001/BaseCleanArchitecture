@@ -31,13 +31,14 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ApprovalLevelName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
@@ -49,10 +50,10 @@ namespace Infrastructure.Migrations
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NumberAppr")
+                    b.Property<int>("NumberOfApproval")
                         .HasColumnType("int");
 
-                    b.Property<int>("NumberDecline")
+                    b.Property<int>("NumberOfRejection")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -60,16 +61,10 @@ namespace Infrastructure.Migrations
                     b.ToTable("ApprovalLevel");
                 });
 
-            modelBuilder.Entity("Domain.Entities.ApprovalLevelLine", b =>
+            modelBuilder.Entity("Domain.Entities.ApprovalLevelUserAppr", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ApprovalLevelId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ApprovalUserId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -77,8 +72,52 @@ namespace Infrastructure.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FatherId")
+                    b.Property<string>("FatherId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FatherId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ApprovalLevelUserApprs");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ApprovalTemplate", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ApprovalTemplateCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ApprovalTemplateName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsCondition")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
@@ -88,9 +127,133 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApprovalLevelId");
+                    b.ToTable("ApprovalTemplates");
+                });
 
-                    b.ToTable("ApprovalLevelLine");
+            modelBuilder.Entity("Domain.Entities.ApprovalTemplateCondition", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FatherId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FatherId");
+
+                    b.ToTable("ApprovalTemplateConditions");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ApprovalTemplateCreator", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CreatorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FatherId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
+
+                    b.HasIndex("FatherId");
+
+                    b.ToTable("ApprovalTemplateCreators");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ApprovalTemplateDocument", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DocType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FatherId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FatherId");
+
+                    b.ToTable("ApprovalTemplateDocuments");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ApprovalTemplateProcess", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ApporvalLevelId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FatherId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApporvalLevelId");
+
+                    b.HasIndex("FatherId");
+
+                    b.ToTable("ApprovalTemplateProcesses");
                 });
 
             modelBuilder.Entity("Domain.Entities.Order", b =>
@@ -198,19 +361,26 @@ namespace Infrastructure.Migrations
                     b.ToTable("OrgLevel");
                 });
 
-            modelBuilder.Entity("Domain.Entities.PurchaseRequest", b =>
+            modelBuilder.Entity("Domain.Entities.PurchasePlan", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DocCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DocDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DocName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("LastModified")
@@ -219,16 +389,12 @@ namespace Infrastructure.Migrations
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.ToTable("PurchaseRequest");
+                    b.ToTable("PurchasePlan");
                 });
 
-            modelBuilder.Entity("Domain.Entities.PurchaseRequestItems", b =>
+            modelBuilder.Entity("Domain.Entities.PurchasePlanLine", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -243,18 +409,18 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("ItemCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ItemName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Quantity")
@@ -267,13 +433,52 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("FatherId");
 
-                    b.ToTable("PurchaseRequestItems");
+                    b.ToTable("PurchasePlanLine");
+                });
+
+            modelBuilder.Entity("Domain.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Infrastructure.Idenitty.ApplicationUser", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -340,8 +545,11 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Infrastructure.Idenitty.Mapper.ApplicationRole", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -379,9 +587,8 @@ namespace Infrastructure.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -404,9 +611,8 @@ namespace Infrastructure.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -426,9 +632,8 @@ namespace Infrastructure.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -439,11 +644,11 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Infrastructure.Idenitty.Mapper.ApplicationUserRole", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -454,8 +659,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Infrastructure.Idenitty.Mapper.ApplicationUserToken", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
@@ -471,11 +676,73 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Entities.ApprovalLevelLine", b =>
+            modelBuilder.Entity("Domain.Entities.ApprovalLevelUserAppr", b =>
                 {
                     b.HasOne("Domain.Entities.ApprovalLevel", null)
-                        .WithMany("ApprovalLevelLines")
-                        .HasForeignKey("ApprovalLevelId");
+                        .WithMany("ApprovalLevelUserApprs")
+                        .HasForeignKey("FatherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ApprovalTemplateCondition", b =>
+                {
+                    b.HasOne("Domain.Entities.ApprovalTemplate", null)
+                        .WithMany("ApprovalTemplateConditions")
+                        .HasForeignKey("FatherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.ApprovalTemplateCreator", b =>
+                {
+                    b.HasOne("Domain.Entities.User", "Creator")
+                        .WithMany()
+                        .HasForeignKey("CreatorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.ApprovalTemplate", null)
+                        .WithMany("ApprovalTemplateCreators")
+                        .HasForeignKey("FatherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Creator");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ApprovalTemplateDocument", b =>
+                {
+                    b.HasOne("Domain.Entities.ApprovalTemplate", null)
+                        .WithMany("ApprovalTemplateDocuments")
+                        .HasForeignKey("FatherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.ApprovalTemplateProcess", b =>
+                {
+                    b.HasOne("Domain.Entities.ApprovalLevel", "ApprovalLevel")
+                        .WithMany()
+                        .HasForeignKey("ApporvalLevelId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.ApprovalTemplate", null)
+                        .WithMany("ApprovalTemplateProcesses")
+                        .HasForeignKey("FatherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApprovalLevel");
                 });
 
             modelBuilder.Entity("Domain.Entities.OrderItem", b =>
@@ -487,10 +754,10 @@ namespace Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Entities.PurchaseRequestItems", b =>
+            modelBuilder.Entity("Domain.Entities.PurchasePlanLine", b =>
                 {
-                    b.HasOne("Domain.Entities.PurchaseRequest", null)
-                        .WithMany("PurchaseRequestItems")
+                    b.HasOne("Domain.Entities.PurchasePlan", null)
+                        .WithMany("ItemLines")
                         .HasForeignKey("FatherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -549,7 +816,18 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.ApprovalLevel", b =>
                 {
-                    b.Navigation("ApprovalLevelLines");
+                    b.Navigation("ApprovalLevelUserApprs");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ApprovalTemplate", b =>
+                {
+                    b.Navigation("ApprovalTemplateConditions");
+
+                    b.Navigation("ApprovalTemplateCreators");
+
+                    b.Navigation("ApprovalTemplateDocuments");
+
+                    b.Navigation("ApprovalTemplateProcesses");
                 });
 
             modelBuilder.Entity("Domain.Entities.Order", b =>
@@ -557,9 +835,9 @@ namespace Infrastructure.Migrations
                     b.Navigation("OrderItems");
                 });
 
-            modelBuilder.Entity("Domain.Entities.PurchaseRequest", b =>
+            modelBuilder.Entity("Domain.Entities.PurchasePlan", b =>
                 {
-                    b.Navigation("PurchaseRequestItems");
+                    b.Navigation("ItemLines");
                 });
 #pragma warning restore 612, 618
         }

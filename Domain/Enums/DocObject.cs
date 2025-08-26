@@ -28,5 +28,10 @@ public enum DocType
     /// <summary>
     /// Nhập kho
     /// </summary>
-    WarehouseReceipt
+    WarehouseReceipt,
+
+    /// <summary>
+    /// Người dùng
+    /// </summary>
+    User,
 }

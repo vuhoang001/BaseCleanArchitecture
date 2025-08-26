@@ -1,8 +1,9 @@
-﻿using Domain.Events.Order;
+﻿using Domain.Enums;
+using Domain.Events.Order;
 
 namespace Domain.Entities;
 
-public class Order : Aggregate<string>
+public class Order : Aggregate<string>, IApprovableEntity
 {
     public string Code { get; private set; } = default!;
     public string Name { get; private set; } = default!;
@@ -41,7 +42,6 @@ public class Order : Aggregate<string>
         {
             AddItem(item.itemCode, item.itemName, item.quantity, item.unitPrice);
         }
-
     }
 
     public void Update(string name,
@@ -72,6 +72,20 @@ public class Order : Aggregate<string>
     {
         var orderItem = new OrderItem(Id, productCode, productName, quanitty, unitPrice);
         _orderItems.Add(orderItem);
+    }
+
+    public string EntityId { get; set; }
+    public string EntityType { get; set; }
+    public ApprovalStatus ApprStatus { get; set; }
+
+    public void ApplyApproval()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void ApplyRejection(string reason)
+    {
+        throw new NotImplementedException();
     }
 }
 

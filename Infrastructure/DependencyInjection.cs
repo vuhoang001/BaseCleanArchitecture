@@ -7,15 +7,20 @@ using Infrastructure.Data.Interceptors;
 using Infrastructure.Idenitty;
 using Infrastructure.Idenitty.Mapper;
 using Infrastructure.Services;
+using Infrastructure.Services.ApprovalLevel;
+using Infrastructure.Services.CodeGeneration;
 using Infrastructure.Services.Mail;
 using Infrastructure.Services.Order;
 using Infrastructure.Services.PurchasePlan;
 using Infrastructure.Services.User;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Shared.Interfaces;
 
@@ -66,10 +71,35 @@ public static class DependencyInjection
 
         var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
 
+        services.AddLogging(builder =>
+        {
+            builder.AddConsole();
+            builder.SetMinimumLevel(LogLevel.Debug);
+        });
+
         services.AddAuthentication(options =>
             {
+                /*
+                 * JWT
+                 */
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme    = JwtBearerDefaults.AuthenticationScheme;
+
+                /*
+                 * Google OAuth Cookie scheme
+                 */
+
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+            {
+                options.LoginPath      = "/api/User/google-login";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+
+                options.Cookie.Name         = "GoogleAuth";
+                options.Cookie.HttpOnly     = true;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                options.Cookie.SameSite     = SameSiteMode.Lax;
             })
             .AddJwtBearer(options =>
             {
@@ -90,13 +120,28 @@ public static class DependencyInjection
                     OnTokenValidated       = _ => { return Task.CompletedTask; },
                     OnChallenge            = _ => { return Task.CompletedTask; }
                 };
-            }).AddGoogle(options =>
+            })
+            .AddGoogle(options =>
             {
                 options.ClientId     = googleSettings.ClientId;
                 options.ClientSecret = googleSettings.ClientSecret;
-                options.CallbackPath = GoogleSettings.SectionName;
+                options.CallbackPath = "/api/User/google-callback";
 
+                options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+                options.Events.OnRemoteFailure = context =>
+                {
+                    Console.WriteLine("OnRemoteFailure: " + context.Failure?.Message);
+                    return Task.CompletedTask;
+                };
+
+                options.Scope.Add("email");
+                options.Scope.Add("profile");
                 options.SaveTokens = true;
+
+
+                options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                options.CorrelationCookie.SameSite     = SameSiteMode.Lax;
             });
 
         services.AddIdentityCore<ApplicationUser>()
@@ -116,5 +161,7 @@ public static class DependencyInjection
         services.AddScoped<IOrderRepository, OrderRepos>();
         services.AddScoped<IPurchasePlanRepos, PurchasePlanRepos>();
         services.AddScoped<IMailService, MailService>();
+        services.AddScoped<ICodeGeneration, CodeGeneration>();
+        services.AddScoped<IApprovalLevelRepos, ApprovalLevelRepos>();
     }
 }

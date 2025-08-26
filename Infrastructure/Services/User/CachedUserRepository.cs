@@ -6,9 +6,9 @@ namespace Infrastructure.Services.User;
 
 public class CachedUserRepository(IUserRepository userRepository, IDistributedCache cache) : IUserRepository
 {
-    public async Task<Domain.Entities.User?> GetByIdAsync(string id)
+    public async Task<Domain.Entities.User?> GetByIdAsync(int id)
     {
-        var cached = await cache.GetStringAsync(id);
+        var cached = await cache.GetStringAsync(id.ToString());
         if (!string.IsNullOrWhiteSpace(cached))
             return JsonSerializer.Deserialize<Domain.Entities.User>(cached);
 
@@ -16,7 +16,7 @@ public class CachedUserRepository(IUserRepository userRepository, IDistributedCa
         if (user != null)
         {
             await cache.SetStringAsync(
-                id,
+                id.ToString(),
                 JsonSerializer.Serialize(user),
                 new DistributedCacheEntryOptions
                 {
@@ -49,10 +49,15 @@ public class CachedUserRepository(IUserRepository userRepository, IDistributedCa
         return user;
     }
 
+    public Task<List<Domain.Entities.User>?> GetUsersByIds(List<int> ids)
+    {
+        return userRepository.GetUsersByIds(ids);
+    }
+
     public async Task CreateAsync(Domain.Entities.User user, string password)
     {
         await userRepository.CreateAsync(user, password);
-        await cache.SetStringAsync(user.Id, JsonSerializer.Serialize(user), new DistributedCacheEntryOptions
+        await cache.SetStringAsync(user.Id.ToString(), JsonSerializer.Serialize(user), new DistributedCacheEntryOptions
         {
             AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(30)
         });
@@ -62,7 +67,7 @@ public class CachedUserRepository(IUserRepository userRepository, IDistributedCa
     {
         await userRepository.UpdateAsync(user);
 
-        await cache.SetStringAsync(user.Id, JsonSerializer.Serialize(user), new DistributedCacheEntryOptions
+        await cache.SetStringAsync(user.Id.ToString(), JsonSerializer.Serialize(user), new DistributedCacheEntryOptions
         {
             AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(30)
         });
@@ -71,7 +76,7 @@ public class CachedUserRepository(IUserRepository userRepository, IDistributedCa
     public async Task DeleteAsync(Domain.Entities.User user)
     {
         await userRepository.DeleteAsync(user);
-        await cache.RemoveAsync(user.Id);
+        await cache.RemoveAsync(user.Id.ToString());
     }
 
     public async Task<bool> CheckPasswordAsync(Domain.Entities.User user, string password)

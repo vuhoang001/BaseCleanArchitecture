@@ -2,7 +2,7 @@
 
 namespace Infrastructure.Idenitty;
 
-public class ApplicationUser : IdentityUser<string>
+public class ApplicationUser : IdentityUser<int>
 {
     public bool IsActive { get; set; }
 }
