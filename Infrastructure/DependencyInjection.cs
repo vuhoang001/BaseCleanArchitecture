@@ -91,16 +91,16 @@ public static class DependencyInjection
 
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             })
-            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
-            {
-                options.LoginPath      = "/api/User/google-login";
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-
-                options.Cookie.Name         = "GoogleAuth";
-                options.Cookie.HttpOnly     = true;
-                options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-                options.Cookie.SameSite     = SameSiteMode.Lax;
-            })
+            // .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+            // {
+            //     options.LoginPath      = "/api/User/google-login";
+            //     options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+            //
+            //     options.Cookie.Name         = "GoogleAuth";
+            //     options.Cookie.HttpOnly     = true;
+            //     options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+            //     options.Cookie.SameSite     = SameSiteMode.Lax;
+            // })
             .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -121,28 +121,29 @@ public static class DependencyInjection
                     OnChallenge            = _ => { return Task.CompletedTask; }
                 };
             })
-            .AddGoogle(options =>
-            {
-                options.ClientId     = googleSettings.ClientId;
-                options.ClientSecret = googleSettings.ClientSecret;
-                options.CallbackPath = "/api/User/google-callback";
-
-                options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-
-                options.Events.OnRemoteFailure = context =>
-                {
-                    Console.WriteLine("OnRemoteFailure: " + context.Failure?.Message);
-                    return Task.CompletedTask;
-                };
-
-                options.Scope.Add("email");
-                options.Scope.Add("profile");
-                options.SaveTokens = true;
-
-
-                options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-                options.CorrelationCookie.SameSite     = SameSiteMode.Lax;
-            });
+            // .AddGoogle(options =>
+            // {
+            //     options.ClientId     = googleSettings.ClientId;
+            //     options.ClientSecret = googleSettings.ClientSecret;
+            //     options.CallbackPath = "/api/User/google-callback";
+            //
+            //     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //
+            //     options.Events.OnRemoteFailure = context =>
+            //     {
+            //         Console.WriteLine("OnRemoteFailure: " + context.Failure?.Message);
+            //         return Task.CompletedTask;
+            //     };
+            //
+            //     options.Scope.Add("email");
+            //     options.Scope.Add("profile");
+            //     options.SaveTokens = true;
+            //
+            //
+            //     options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+            //     options.CorrelationCookie.SameSite     = SameSiteMode.Lax;
+            // })
+            ;
 
         services.AddIdentityCore<ApplicationUser>()
             .AddRoles<ApplicationRole>()
