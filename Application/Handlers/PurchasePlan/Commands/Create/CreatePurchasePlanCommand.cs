@@ -1,6 +1,6 @@
 ﻿using Shared.ExceptionBase;
 
-namespace Application.PurchasePlan.Commands.Create;
+namespace Application.Handlers.PurchasePlan.Commands.Create;
 
 public record CreatePurchasePlanCommand(CreatePurchasePlanDto Dto) : ICommand<Result<bool>>;
 

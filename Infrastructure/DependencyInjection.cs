@@ -65,9 +65,9 @@ public static class DependencyInjection
         var jwtSettings = configuration.GetSection(JwtSettings.SectionName).Get<JwtSettings>()
             ?? throw new ArgumentNullException(nameof(JwtSettings));
 
-        services.Configure<GoogleSettings>(configuration.GetSection(GoogleSettings.SectionName));
-        var googleSettings = configuration.GetSection(GoogleSettings.SectionName).Get<GoogleSettings>()
-            ?? throw new ArgumentNullException(nameof(GoogleSettings));
+        // services.Configure<GoogleSettings>(configuration.GetSection(GoogleSettings.SectionName));
+        // var googleSettings = configuration.GetSection(GoogleSettings.SectionName).Get<GoogleSettings>()
+        //     ?? throw new ArgumentNullException(nameof(GoogleSettings));
 
         var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
 

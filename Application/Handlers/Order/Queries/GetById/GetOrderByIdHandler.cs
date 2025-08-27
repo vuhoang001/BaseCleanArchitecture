@@ -1,16 +1,17 @@
 ﻿using Application.Data;
 using Application.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using Shared.ExceptionBase;
 
-namespace Application.Order.Queries.GetById;
+namespace Application.Handlers.Order.Queries.GetById;
 
 public class GetOrderByIdHandler(IApplicationDbContext context, IOrderRepository orderRepository)
-    : IQueryHandler<GetOrderByIdQuery, Domain.Entities.Order>
+    : IQueryHandler<GetOrderByIdCommand, Result<Domain.Entities.Order>>
 {
-    public async Task<Domain.Entities.Order> Handle(GetOrderByIdQuery request, CancellationToken cancellationToken)
+    public async Task<Result<Domain.Entities.Order>> Handle(GetOrderByIdCommand request,
+        CancellationToken cancellationToken)
     {
         var order = await orderRepository.FindByIdAsync(request.Id);
         if (order is null) throw new Exception();
-        return order;
+        return Result<Domain.Entities.Order>.Success(order);
     }
 }

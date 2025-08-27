@@ -74,8 +74,13 @@ public class Order : Aggregate<string>, IApprovableEntity
         _orderItems.Add(orderItem);
     }
 
-    public string EntityId { get; set; }
-    public string EntityType { get; set; }
+    public string EntityId
+    {
+        get => Id;
+        set => Id = value;
+    }
+
+    public string EntityType { get; set; } = typeof(Order).Name;
     public ApprovalStatus ApprStatus { get; set; }
 
     public void ApplyApproval()
