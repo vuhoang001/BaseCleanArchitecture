@@ -7,7 +7,7 @@ public interface IApprovalLevelRepos
 {
     Task CreateAsync(ApprovalLevel approvalLevel);
 
-    Task<ApprovalLevel?> GetByIdAsync(string id);
+    Task<ApprovalLevel?> GetByIdAsync(int id);
 
 
     Task UpdateAsync(ApprovalLevel approvalLevel);

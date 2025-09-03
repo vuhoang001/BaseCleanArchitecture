@@ -13,7 +13,6 @@ public interface IApplicationDbContext
     DbSet<Domain.Entities.ApprovalLevel> ApprovalLevel { get; }
     DbSet<ApprovalLevelUserAppr> ApprovalLevelUserApprs { get; }
     DbSet<ApprovalTemplate> ApprovalTemplates { get; }
-    DbSet<ApprovalTemplateCondition> ApprovalTemplateConditions { get; }
     DbSet<ApprovalTemplateCreator> ApprovalTemplateCreators { get; }
     DbSet<ApprovalTemplateDocument> ApprovalTemplateDocuments { get; }
     DbSet<ApprovalTemplateProcess> ApprovalTemplateProcesses { get; }

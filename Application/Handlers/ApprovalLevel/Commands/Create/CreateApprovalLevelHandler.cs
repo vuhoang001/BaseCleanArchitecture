@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Application.Interfaces.Base;
 using Shared.ExceptionBase;
 
 namespace Application.Handlers.ApprovalLevel.Commands.Create;
@@ -6,7 +7,8 @@ namespace Application.Handlers.ApprovalLevel.Commands.Create;
 public class CreateApprovalLevelHandler(
     IApprovalLevelRepos approvalLevelRepos,
     ICodeGeneration codeGeneration,
-    IUserRepository userRepository)
+    IUserRepository userRepository,
+    IUnitOfWork unitOfWork)
     : ICommandHandler<CreateApprovalLevelCommand, Result<bool>>
 {
     public async
@@ -24,13 +26,13 @@ public class CreateApprovalLevelHandler(
             return Result<bool>.Failure($"Người dùng không tồn tại: {string.Join(", ", missingIds)}");
         }
 
-
-        var approvalLevel = new Domain.Entities.ApprovalLevel(code,
-            request.ApprovalLevel.ApprovalLevelName, request.ApprovalLevel.IsActive,
-            request.ApprovalLevel.NumberOfApproval, request.ApprovalLevel.NumberOfRejection);
-        approvalLevel.AddItem(request.ApprovalLevel.ApprovalLevelUserApprs);
+        var approvalLevel = Domain.Entities.ApprovalLevel.Create(code, request.ApprovalLevel.ApprovalLevelName,
+            request.ApprovalLevel.IsActive, request.ApprovalLevel.NumberOfApproval,
+            request.ApprovalLevel.NumberOfRejection);
 
         await approvalLevelRepos.CreateAsync(approvalLevel);
+
+        await unitOfWork.SaveChangesAsync();
         return Result<bool>.Success(true);
     }
 }

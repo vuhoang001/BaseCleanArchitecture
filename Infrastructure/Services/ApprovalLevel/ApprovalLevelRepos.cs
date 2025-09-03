@@ -11,7 +11,7 @@ public class ApprovalLevelRepos(ApplicationDbContext context) : IApprovalLevelRe
         await context.SaveChangesAsync();
     }
 
-    public async Task<Domain.Entities.ApprovalLevel?> GetByIdAsync(string id)
+    public async Task<Domain.Entities.ApprovalLevel?> GetByIdAsync(int id)
     {
         var result = await context.ApprovalLevel.FirstOrDefaultAsync(x => x.Id == id);
         return result;

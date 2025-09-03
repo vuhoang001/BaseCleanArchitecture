@@ -2,10 +2,12 @@
 using Application.Data;
 using Application.Dtos;
 using Application.Interfaces;
+using Application.Interfaces.Base;
 using Infrastructure.Data;
 using Infrastructure.Data.Interceptors;
 using Infrastructure.Idenitty;
 using Infrastructure.Idenitty.Mapper;
+using Infrastructure.Persistence.Repositories;
 using Infrastructure.Services;
 using Infrastructure.Services.ApprovalLevel;
 using Infrastructure.Services.CodeGeneration;
@@ -91,16 +93,6 @@ public static class DependencyInjection
 
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             })
-            // .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
-            // {
-            //     options.LoginPath      = "/api/User/google-login";
-            //     options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-            //
-            //     options.Cookie.Name         = "GoogleAuth";
-            //     options.Cookie.HttpOnly     = true;
-            //     options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-            //     options.Cookie.SameSite     = SameSiteMode.Lax;
-            // })
             .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -158,6 +150,7 @@ public static class DependencyInjection
         services.Configure<EmailSettings>(configuration.GetSection(EmailSettings.SectionName));
         var _ = configuration.GetSection(EmailSettings.SectionName).Get<EmailSettings>()
             ?? throw new ArgumentNullException(nameof(EmailSettings));
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         services.AddScoped<IOrderRepository, OrderRepos>();
         services.AddScoped<IPurchasePlanRepos, PurchasePlanRepos>();

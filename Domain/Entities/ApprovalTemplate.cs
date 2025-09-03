@@ -2,7 +2,7 @@
 
 namespace Domain.Entities;
 
-public class ApprovalTemplate : Aggregate<string>
+public class ApprovalTemplate : Aggregate<int>
 {
     public string ApprovalTemplateCode { get; private set; } = null!;
     public string ApprovalTemplateName { get; private set; } = null!;
@@ -10,15 +10,12 @@ public class ApprovalTemplate : Aggregate<string>
     public bool IsCondition { get; private set; }
     public bool IsActive { get; private set; }
 
-    private readonly List<ApprovalTemplateCreator>   _approvalTemplateCreators   = new();
-    private readonly List<ApprovalTemplateCondition> _approvalTemplateConditions = new();
-    private readonly List<ApprovalTemplateProcess>   _approvalTemplateProcesses  = new();
-    private readonly List<ApprovalTemplateDocument>  _approvalTemplateDocuments  = new();
+    private readonly List<ApprovalTemplateCreator>  _approvalTemplateCreators  = new();
+    private readonly List<ApprovalTemplateProcess>  _approvalTemplateProcesses = new();
+    private readonly List<ApprovalTemplateDocument> _approvalTemplateDocuments = new();
 
     public IReadOnlyList<ApprovalTemplateCreator> ApprovalTemplateCreators => _approvalTemplateCreators.AsReadOnly();
 
-    public IReadOnlyList<ApprovalTemplateCondition> ApprovalTemplateConditions =>
-        _approvalTemplateConditions.AsReadOnly();
 
     public IReadOnlyList<ApprovalTemplateProcess> ApprovalTemplateProcesses => _approvalTemplateProcesses.AsReadOnly();
     public IReadOnlyList<ApprovalTemplateDocument> ApprovalTemplateDocuments => _approvalTemplateDocuments.AsReadOnly();
@@ -30,7 +27,6 @@ public class ApprovalTemplate : Aggregate<string>
 
     public ApprovalTemplate(string approvalTemplateCode, string approvalTemplateName, bool isCondition, bool isActive)
     {
-        Id                   = Guid.NewGuid().ToString();
         ApprovalTemplateCode = approvalTemplateCode;
         ApprovalTemplateName = approvalTemplateName;
         IsCondition          = isCondition;
@@ -40,10 +36,9 @@ public class ApprovalTemplate : Aggregate<string>
     public void Add(string approvalTemplateCode, string approvalTemplateName, bool isCondition, bool isActive,
         IEnumerable<int>? approvalTemplateCreatorIds,
         IEnumerable<DocType>? approvalTemplateDocumentTypes,
-        IEnumerable<string>? approvalTemplateProcessIds
+        IEnumerable<int>? approvalTemplateProcessIds
     )
     {
-        Id                   = Guid.NewGuid().ToString();
         ApprovalTemplateCode = approvalTemplateCode;
         ApprovalTemplateName = approvalTemplateName;
         IsCondition          = isCondition;
@@ -52,29 +47,29 @@ public class ApprovalTemplate : Aggregate<string>
         if (approvalTemplateCreatorIds != null)
             foreach (var approvalTemplateCreatorId in approvalTemplateCreatorIds)
             {
-                var newApprLevelTemplateCreator = new ApprovalTemplateCreator(Id, approvalTemplateCreatorId);
+                var newApprLevelTemplateCreator = new ApprovalTemplateCreator(approvalTemplateCreatorId);
                 _approvalTemplateCreators.Add(newApprLevelTemplateCreator);
             }
 
         if (approvalTemplateDocumentTypes != null)
             foreach (var approvalTemplateDocumentType in approvalTemplateDocumentTypes)
             {
-                var newApprovalTemplateDocument = new ApprovalTemplateDocument(Id, approvalTemplateDocumentType);
+                var newApprovalTemplateDocument = new ApprovalTemplateDocument(approvalTemplateDocumentType);
                 _approvalTemplateDocuments.Add(newApprovalTemplateDocument);
             }
 
         if (approvalTemplateProcessIds != null)
             foreach (var approvalTemplateProcessId in approvalTemplateProcessIds)
             {
-                var newApprovalTemplateProcess = new ApprovalTemplateProcess(Id, approvalTemplateProcessId);
+                var newApprovalTemplateProcess = new ApprovalTemplateProcess(approvalTemplateProcessId);
                 _approvalTemplateProcesses.Add(newApprovalTemplateProcess);
             }
     }
 }
 
-public class ApprovalTemplateCreator : Entity<string>
+public class ApprovalTemplateCreator : Entity<int>
 {
-    public string FatherId { get; private set; } = null!;
+    public int FatherId { get; private set; }
     public int CreatorId { get; private set; }
     public User? Creator { get; private set; }
 
@@ -82,17 +77,15 @@ public class ApprovalTemplateCreator : Entity<string>
     {
     }
 
-    public ApprovalTemplateCreator(string fatherId, int creatorId)
+    public ApprovalTemplateCreator(int creatorId)
     {
-        Id        = Guid.NewGuid().ToString();
-        FatherId  = fatherId;
         CreatorId = creatorId;
     }
 }
 
-public class ApprovalTemplateDocument : Entity<string>
+public class ApprovalTemplateDocument : Entity<int>
 {
-    public string FatherId { get; private set; } = null!;
+    public int FatherId { get; private set; }
 
     public DocType DocType { get; private set; }
 
@@ -100,44 +93,25 @@ public class ApprovalTemplateDocument : Entity<string>
     {
     }
 
-    public ApprovalTemplateDocument(string fatherId, DocType docType)
+    public ApprovalTemplateDocument(DocType docType)
     {
-        Id       = Guid.NewGuid().ToString();
-        FatherId = fatherId;
-        DocType  = docType;
+        DocType = docType;
     }
 }
 
-public class ApprovalTemplateProcess : Entity<string>
+public class ApprovalTemplateProcess : Entity<int>
 {
-    public string FatherId { get; private set; } = null!;
+    public int FatherId { get; private set; }
 
-    public string ApporvalLevelId { get; private set; } = null!;
+    public int ApporvalLevelId { get; private set; }
     public ApprovalLevel? ApprovalLevel { get; private set; }
 
     public ApprovalTemplateProcess()
     {
     }
 
-    public ApprovalTemplateProcess(string fatherId, string apporvalLevelId)
+    public ApprovalTemplateProcess(int apporvalLevelId)
     {
-        Id              = Guid.NewGuid().ToString();
-        FatherId        = fatherId;
         ApporvalLevelId = apporvalLevelId;
-    }
-}
-
-public class ApprovalTemplateCondition : Entity<string>
-{
-    public string FatherId { get; private set; } = null!;
-
-    public ApprovalTemplateCondition()
-    {
-    }
-
-    public ApprovalTemplateCondition(string fatherId)
-    {
-        Id       = Guid.NewGuid().ToString();
-        FatherId = fatherId;
     }
 }

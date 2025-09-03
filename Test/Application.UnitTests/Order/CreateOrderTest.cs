@@ -1,6 +1,7 @@
 ﻿using Application.Dtos;
 using Application.Handlers.Order.Commands.Create;
 using Application.Interfaces;
+using Application.Interfaces.Base;
 using FluentAssertions;
 using Moq;
 using Shared.ExceptionBase;
@@ -14,12 +15,15 @@ public class CreateOrderTest
     {
         var repo           = new Mock<IOrderRepository>();
         var codeGeneration = new Mock<ICodeGeneration>();
+        var uow            = new Mock<IUnitOfWork>();
 
         repo.Setup(r => r.CreateAsync(It.IsAny<Domain.Entities.Order>()))
             .Returns(Task.FromResult(true));
 
         codeGeneration.Setup(c => c.GenerateCodeAsync<Domain.Entities.Order>(x => x.Code, "ORD-", 5))
             .ReturnsAsync("ORD-00001");
+
+        // uow.Setup(r => r.SaveChangesAsync()).ReturnsAsync(1);
 
         var dto = new CreateOrderRequest
         {
@@ -33,7 +37,7 @@ public class CreateOrderTest
         };
 
         var cmd     = new CreateOrderCommand(dto);
-        var handler = new CreateOrderHandler(repo.Object, codeGeneration.Object);
+        var handler = new CreateOrderHandler(repo.Object, codeGeneration.Object, uow.Object);
 
         var result = await handler.Handle(cmd, CancellationToken.None);
 

@@ -58,7 +58,7 @@ public class ApprovalRuleEngine : IApprovalRuleEngine
 
         var orderRepo = _serviceProvider.GetRequiredService<IOrderRepository>();
 
-        var orderExist = await orderRepo.FindByIdAsync(order.Id);
+        var orderExist = await orderRepo.GetByIdAsync(order.Id);
         if (orderExist is null) return false;
         return true;
     }

@@ -2,7 +2,7 @@
 
 namespace Domain.Entities;
 
-public class ApprovalLevel : Aggregate<string>
+public class ApprovalLevel : Aggregate<int>
 {
     public string ApprovalLevelCode { get; private set; } = default!;
     public string ApprovalLevelName { get; private set; } = default!;
@@ -37,35 +37,49 @@ public class ApprovalLevel : Aggregate<string>
         var userToAdd = newUserIdsList.Where(userId => !existingUserIds.Contains(userId)).ToList();
         userToAdd.ForEach(x =>
         {
-            var newUser = new ApprovalLevelUserAppr(Id, x);
+            var newUser = new ApprovalLevelUserAppr(x);
             _approvalLevelUserApprs.Add(newUser);
         });
     }
 
-    public ApprovalLevel(string approvalLevelCode, string approvalLevelName, bool isActive, int numberOfApproval,
+    public static ApprovalLevel Create(string approvalLevelCode, string approvalLevelName, bool isActive,
+        int numberOfApproval,
         int numberOfRejection)
     {
-        Id                = Guid.NewGuid().ToString();
+        return new ApprovalLevel
+        {
+            ApprovalLevelCode = approvalLevelCode,
+            ApprovalLevelName = approvalLevelName,
+            IsActive          = isActive,
+            NumberOfApproval  = numberOfApproval,
+            NumberOfRejection = numberOfRejection
+        };
+    }
+
+    public ApprovalLevel(string approvalLevelCode, string approvalLevelName, bool isActive, int numberOfApproval,
+        int numberOfRejection, List<int> approvalLevelUserApprs)
+    {
         ApprovalLevelCode = approvalLevelCode;
         ApprovalLevelName = approvalLevelName;
         IsActive          = isActive;
         NumberOfApproval  = numberOfApproval;
         NumberOfRejection = numberOfRejection;
+        AddItem(approvalLevelUserApprs);
     }
 
     public void AddItem(IEnumerable<int> approvalLevelUserApprs)
     {
         foreach (var user in approvalLevelUserApprs)
         {
-            var newUser = new ApprovalLevelUserAppr(Id, user);
+            var newUser = new ApprovalLevelUserAppr(user);
             _approvalLevelUserApprs.Add(newUser);
         }
     }
 }
 
-public class ApprovalLevelUserAppr : Entity<string>
+public class ApprovalLevelUserAppr : Entity<int>
 {
-    public string FatherId { get; private set; } = null!;
+    public int FatherId { get; private set; }
     public int UserId { get; private set; }
     public User? User { get; private set; }
 
@@ -73,10 +87,8 @@ public class ApprovalLevelUserAppr : Entity<string>
     {
     }
 
-    public ApprovalLevelUserAppr(string fatherId, int userId)
+    public ApprovalLevelUserAppr(int userId)
     {
-        Id       = Guid.NewGuid().ToString();
-        FatherId = fatherId;
-        UserId   = userId;
+        UserId = userId;
     }
 }

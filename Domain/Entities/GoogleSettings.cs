@@ -1,5 +1,8 @@
 ﻿namespace Domain.Entities;
 
+/// <summary>
+/// Tai sao lai o day
+/// </summary>
 public class GoogleSettings
 {
     public const string SectionName = "GoogleSettings";

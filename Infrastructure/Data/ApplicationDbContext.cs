@@ -24,7 +24,6 @@ public class ApplicationDbContext :
     public DbSet<ApprovalLevel> ApprovalLevel => Set<ApprovalLevel>();
     public DbSet<ApprovalLevelUserAppr> ApprovalLevelUserApprs => Set<ApprovalLevelUserAppr>();
     public DbSet<ApprovalTemplate> ApprovalTemplates => Set<ApprovalTemplate>();
-    public DbSet<ApprovalTemplateCondition> ApprovalTemplateConditions => Set<ApprovalTemplateCondition>();
     public DbSet<ApprovalTemplateCreator> ApprovalTemplateCreators => Set<ApprovalTemplateCreator>();
     public DbSet<ApprovalTemplateDocument> ApprovalTemplateDocuments => Set<ApprovalTemplateDocument>();
     public DbSet<ApprovalTemplateProcess> ApprovalTemplateProcesses => Set<ApprovalTemplateProcess>();

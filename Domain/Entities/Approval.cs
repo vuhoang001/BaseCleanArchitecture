@@ -4,9 +4,9 @@ using Domain.Enums;
 
 namespace Domain.Entities;
 
-public class Approval : Aggregate<string>
+public class Approval : Aggregate<int>
 {
-    public string EntityId { get; private set; } = default!;
+    public int EntityId { get; private set; } = default!;
     public string EntityType { get; private set; } = default!;
 
     public string ApprovalLevelId { get; private set; } = default!;
@@ -19,11 +19,10 @@ public class Approval : Aggregate<string>
 
     public ApprovalStatus ApprStatus { get; private set; } = ApprovalStatus.Pending;
 
-    public static Approval Create(string entityId, string entityType)
+    public static Approval Create(int entityId, string entityType)
     {
         var approval = new Approval
         {
-            Id         = Guid.NewGuid().ToString(),
             EntityId   = entityId,
             EntityType = entityType,
             ApprStatus = ApprovalStatus.Pending
@@ -32,9 +31,9 @@ public class Approval : Aggregate<string>
     }
 }
 
-public class ApprovalLine : Entity<string>
+public class ApprovalLine : Entity<int>
 {
-    public string FatherId { get; private set; } = default!;
+    public int FatherId { get; private set; } = default!;
 
     [JsonIgnore] [NotMapped] public Approval Approval { get; private set; } = default!;
 

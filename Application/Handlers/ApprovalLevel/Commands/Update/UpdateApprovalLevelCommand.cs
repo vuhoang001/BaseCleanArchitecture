@@ -2,7 +2,7 @@
 
 namespace Application.Handlers.ApprovalLevel.Commands.Update;
 
-public record UpdateApprovalLevelCommand(string Id, UpdateApprovalLevel ApprovalLevel) : ICommand<Result<bool>>;
+public record UpdateApprovalLevelCommand(int Id, UpdateApprovalLevel ApprovalLevel) : ICommand<Result<bool>>;
 
 public record UpdateApprovalLevel
 {

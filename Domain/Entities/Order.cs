@@ -1,18 +1,17 @@
-﻿using Domain.Enums;
-using Domain.Events.Order;
+﻿using System.Text.Json.Serialization;
+using Domain.Enums;
 
 namespace Domain.Entities;
 
-public class Order : Aggregate<string>, IApprovableEntity
+public class Order : Aggregate<int>, IApprovableEntity
 {
     public string Code { get; private set; } = default!;
     public string Name { get; private set; } = default!;
 
     public decimal TotalPrice => _orderItems.Sum(x => x.UnitPrice * x.Quantity);
 
-    private readonly List<OrderItem> _orderItems = new();
-
-    public IReadOnlyList<OrderItem> OrderItems => _orderItems.AsReadOnly();
+    private List<OrderItem> _orderItems { get; set; } = [];           // backing field
+    public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
 
     private Order()
     {
@@ -21,7 +20,6 @@ public class Order : Aggregate<string>, IApprovableEntity
     public Order(string code, string name,
         IEnumerable<(string itemCode, string itemName, decimal quantity, decimal unitPrice)> items)
     {
-        Id   = Guid.NewGuid().ToString();
         Code = code;
         Name = name;
 
@@ -34,7 +32,6 @@ public class Order : Aggregate<string>, IApprovableEntity
     public void Add(string code, string name,
         IEnumerable<(string itemCode, string itemName, decimal quantity, decimal unitPrice)> items)
     {
-        Id   = Guid.NewGuid().ToString();
         Code = code;
         Name = name;
 
@@ -70,11 +67,11 @@ public class Order : Aggregate<string>, IApprovableEntity
 
     public void AddItem(string productCode, string productName, decimal quanitty, decimal unitPrice)
     {
-        var orderItem = new OrderItem(Id, productCode, productName, quanitty, unitPrice);
+        var orderItem = new OrderItem(productCode, productName, quanitty, unitPrice);
         _orderItems.Add(orderItem);
     }
 
-    public string EntityId
+    public int EntityId
     {
         get => Id;
         set => Id = value;
@@ -94,13 +91,14 @@ public class Order : Aggregate<string>, IApprovableEntity
     }
 }
 
-public class OrderItem : Entity<string>
+public class OrderItem : Entity<int>
 {
-    public string FatherId { get; private set; } = null!;
+    public int FatherId { get; private set; }
     public string ProductCode { get; private set; } = null!;
     public string ProductName { get; private set; } = null!;
     public decimal Quantity { get; private set; }
     public decimal UnitPrice { get; private set; }
+
 
     private OrderItem()
     {
@@ -112,10 +110,8 @@ public class OrderItem : Entity<string>
         UnitPrice = unitPrice;
     }
 
-    public OrderItem(string fatherId, string productCode, string productName, decimal quantity, decimal unitPrice)
+    public OrderItem(string productCode, string productName, decimal quantity, decimal unitPrice)
     {
-        Id          = Guid.NewGuid().ToString();
-        FatherId    = fatherId;
         ProductCode = productCode;
         ProductName = productName;
         Quantity    = quantity;

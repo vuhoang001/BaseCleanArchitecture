@@ -28,7 +28,7 @@ public class OrderController : BaseController
 
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(string id)
+    public async Task<IActionResult> GetById(int id)
     {
         var command = new GetOrderByIdCommand(id);
         var result  = await _sender.Send(command);

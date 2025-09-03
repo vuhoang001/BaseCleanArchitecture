@@ -1,9 +1,11 @@
-﻿namespace Domain.Abstractions;
+﻿using System.Text.Json.Serialization;
+
+namespace Domain.Abstractions;
 
 public abstract class Aggregate<TId> : Entity<TId>, IAggregate<TId>
 {
     private readonly List<IDomainEvent> _domainEvents = new();
-    public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+    [JsonIgnore] public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
     public void AddDomainEvent(IDomainEvent domainEvent)
     {

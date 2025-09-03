@@ -2,4 +2,4 @@
 
 namespace Application.Handlers.Order.Queries.GetById;
 
-public record GetOrderByIdCommand(string Id) : IQuery<Result<Domain.Entities.Order>>;
+public record GetOrderByIdCommand(int Id) : IQuery<Result<Domain.Entities.Order>>;

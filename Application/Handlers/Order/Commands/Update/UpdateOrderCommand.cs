@@ -1,8 +1,8 @@
 ﻿using Shared.ExceptionBase;
 
-namespace Application.Order.Commands.Update;
+namespace Application.Handlers.Order.Commands.Update;
 
-public record UpdateOrderCommand(string Id, UpdateOrderDto Order) : ICommand<Result<bool>>;
+public record UpdateOrderCommand(int Id, UpdateOrderDto Order) : ICommand<Result<bool>>;
 
 public record UpdateOrderDto
 {
@@ -20,7 +20,7 @@ public record UpdateOrderDto
 
 public record UpdateOrderLineDto
 {
-    public string? Id { get; set; }
+    public int? Id { get; set; }
 
     /// <summary>Mã sản phẩm</summary>
     public string ProductCode { get; init; } = "";

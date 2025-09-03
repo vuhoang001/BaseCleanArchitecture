@@ -6,8 +6,12 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
 {
     public void Configure(EntityTypeBuilder<Order> builder)
     {
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id);
+        
+
         builder
-            .HasMany(x => x.OrderItems)
+            .HasMany<OrderItem>("_orderItems")
             .WithOne()
             .HasForeignKey(x => x.FatherId);
     }

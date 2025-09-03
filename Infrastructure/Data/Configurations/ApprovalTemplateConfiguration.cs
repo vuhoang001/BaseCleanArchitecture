@@ -7,11 +7,6 @@ public class ApprovalTemplateConfiguration : IEntityTypeConfiguration<ApprovalTe
 {
     public void Configure(EntityTypeBuilder<ApprovalTemplate> builder)
     {
-        builder.HasMany(x => x.ApprovalTemplateConditions)
-            .WithOne()
-            .HasForeignKey(x => x.FatherId)
-            .OnDelete(DeleteBehavior.Cascade);
-
         builder
             .HasMany(x => x.ApprovalTemplateCreators)
             .WithOne()

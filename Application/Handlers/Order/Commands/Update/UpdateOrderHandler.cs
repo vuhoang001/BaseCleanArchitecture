@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces;
-using Application.Order.Commands.Update;
 using Shared.ExceptionBase;
 
 namespace Application.Handlers.Order.Commands.Update;
@@ -8,7 +7,7 @@ public class UpdateOrderHandler(IOrderRepository orderRepos) : ICommandHandler<U
 {
     public async Task<Result<bool>> Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
     {
-        var order = await orderRepos.FindByIdAsync(request.Id);
+        var order = await orderRepos.GetByIdAsync(request.Id);
         if (order is null) return Result<bool>.Failure($"Không tìm thấy đơn hàng {request.Id}");
 
         var orderItems = request.Order.OrderItems

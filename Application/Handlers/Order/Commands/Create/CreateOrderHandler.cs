@@ -1,10 +1,14 @@
 ﻿using Application.Interfaces;
+using Application.Interfaces.Base;
 using Domain.Events.Order;
 using Shared.ExceptionBase;
 
 namespace Application.Handlers.Order.Commands.Create;
 
-public class CreateOrderHandler(IOrderRepository orderRepository, ICodeGeneration codeGeneration)
+public class CreateOrderHandler(
+    IOrderRepository orderRepository,
+    ICodeGeneration codeGeneration,
+    IUnitOfWork unitOfWork)
     : ICommandHandler<CreateOrderCommand, Result<bool>>
 {
     public async Task<Result<bool>> Handle(CreateOrderCommand handle, CancellationToken cancellationToken)
@@ -14,7 +18,9 @@ public class CreateOrderHandler(IOrderRepository orderRepository, ICodeGeneratio
         var order      = new Domain.Entities.Order(code, handle.Order.Name, orderItems);
         order.AddDomainEvent(new OrderCreateProductEvent(order));
 
-        await orderRepository.CreateAsync(order);
+        var orderRepo = unitOfWork.Repository<Domain.Entities.Order, int>();
+        await orderRepo.CreateAsync(order);
+        await unitOfWork.SaveChangesAsync();
 
         return Result<bool>.Success(true);
     }
